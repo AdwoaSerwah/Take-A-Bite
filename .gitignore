@@ -1,0 +1,4 @@
+.env
+secret_key.py
+create_user
+setup_mysql_dev.sql

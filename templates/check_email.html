@@ -1,0 +1,33 @@
+<!-- templates/check_email.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Your Email</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/check_email.css') }}?v={{ cache_id }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}?v={{ cache_id }}" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>Check Your Email</h1>
+        <p>
+          A password reset link has been sent to your email address.
+          Please check your inbox and follow the instructions to
+          reset your password.
+        </p>
+
+        <!-- Display flashed messages
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flash-messages">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %} -->
+        
+    </div>
+</body>
+</html>

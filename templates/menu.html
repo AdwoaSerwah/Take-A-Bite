@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% set title = "Menu Items" %}
+    {% set custom_css = 'styles/menu.css' %}
+    {% set custom_js = 'scripts/menu.js' %}
+    
+    {% include 'head.html' %}
+    <body>
+        <!-- Loading Spinner -->
+        <!--<div id="loading-spinner" class="loading-spinner">
+            <div class="spinner"></div>
+        </div>-->
+        <!-- Include the common header -->
+        {% include 'header.html' %}
+        <main>
+            <div class="menu-header">
+                <h2 class="menu-title">Our Menu</h2>
+
+                <!-- Search bar with a button -->
+                <div class="menu-search">
+                    <input type="text" id="menu-search-input" placeholder="Search food in selected category">
+                    <i class="fas fa-search search-icon"></i>
+                </div>            
+
+                <!-- Category filter -->
+                <ul class="categories">
+                    <li class="{{ 'active' if not request.args.get('category') }}" data-filter="all">All</li>
+                    {% for category in categories %}
+                        <li class="{{ 'active' if request.args.get('category') == category.id }}" data-filter="{{ category.id }}">{{ category.name }}</li>
+                    {% endfor %}
+                </ul>
+
+
+            </div>
+
+            <!-- No results message -->
+            <div class="no-results-message no-results-partial"></div>
+
+            <!-- Suggestion message -->
+            <div class="suggestion-message"></div>
+
+            <!-- Suggestion list -->
+            <div class="suggestion-list menu-items"></div>
+
+            <section class="menu-items">
+                {% for item in menu_items %}
+                    <div class="menu-item" data-category="{{ item.category_id }}" data-item-id="{{ item.id }}">
+                        <img src="{{ url_for('static', filename=item.image_url) }}" alt="{{ item.name }}">
+                        <div class="menu-item-info">
+                            <h2>{{ item.name }}</h2>
+                            <p>{{ item.description }}</p>
+                            <div class="price-cart">
+                                <p class="price">GH₵ {{ item.price }}</p>
+                                <div class="quantity-counter">
+                                    <button class="quantity-btn plus {% if item.id in cart_items %}faded-icon{% endif %}" onclick="decrementQuantity(this)">−</button>
+                                    <span class="quantity">{{ cart_items[item.id] if item.id in cart_items else 1 }}</span>
+                                    <button class="quantity-btn minus {% if item.id in cart_items %}faded-icon{% endif %}" onclick="incrementQuantity(this)">+</button>
+                                </div>
+                            </div>
+            
+                            <form id="add-to-cart-form" method="post" action="{{ url_for('app_views.add_to_cart') }}">
+                                <input type="hidden" name="menu_item_id" value="{{ item.id }}">
+                                <input type="hidden" name="quantity" value="{{ cart_items[item.id] if item.id in cart_items else 1 }}">
+                            
+                                <button type="submit" class="{% if item.id in cart_items %}view-cart{% else %}add-cart{% endif %}">
+                                    <span class="cart-col">
+                                        {% if item.id in cart_items %}
+                                            <span>View Cart</span>
+                                        {% else %}
+                                            <span>Add  |  </span>
+                                            <span>GH₵ {{ item.price }}</span>                                        
+                                        {% endif %}
+                                    </span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </section>   
+        </main>
+        {% include 'footer.html' %}
+    </body>
+</html>

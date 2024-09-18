@@ -1,0 +1,43 @@
+---
+get:
+  summary: Retrieve a menu item
+  description: Retrieves a specific menu item by its ID.
+  parameters:
+    - in: path
+      name: menu_item_id
+      required: true
+      schema:
+        type: string
+      description: The ID of the menu item to retrieve
+  responses:
+    200:
+      description: Details of the menu item
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MenuItem'
+    404:
+      description: Menu item not found
+    500:
+      description: Internal server error
+components:
+  schemas:
+    MenuItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123'
+        name:
+          type: string
+          example: 'Pizza Margherita'
+        price:
+          type: number
+          format: float
+          example: 12.99
+        description:
+          type: string
+          example: 'Classic cheese pizza with tomatoes'
+        category_id:
+          type: string
+          example: 'e8f24d27-a340-4b20-bd99-011b9d395ea4'

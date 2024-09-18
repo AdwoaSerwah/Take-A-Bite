@@ -1,0 +1,15 @@
+---
+delete:
+  summary: "Delete a payment"
+  description: "Removes a payment from the system by ID"
+  parameters:
+    - name: "payment_id"
+      in: "path"
+      description: "ID of the payment to delete"
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: "Payment deleted successfully"
+    404:
+      description: "Payment not found"

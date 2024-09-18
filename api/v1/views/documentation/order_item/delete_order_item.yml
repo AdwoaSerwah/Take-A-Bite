@@ -1,0 +1,15 @@
+---
+delete:
+  summary: "Delete an order item"
+  description: "Removes an order item from the system by ID"
+  parameters:
+    - name: "order_item_id"
+      in: "path"
+      description: "ID of the order item to delete"
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: "Order item deleted successfully"
+    404:
+      description: "Order item not found"

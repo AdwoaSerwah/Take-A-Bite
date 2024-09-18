@@ -1,0 +1,48 @@
+swagger: '2.0'
+info:
+  title: Menu Items by Category
+  description: Endpoint to retrieve menu items filtered by category ID.
+  version: 1.0.0
+paths:
+  /menu_items/category/{category_id}:
+    get:
+      summary: Get Menu Items by Category
+      description: Retrieves a list of menu items that belong to a specific category.
+      parameters:
+        - name: category_id
+          in: path
+          required: true
+          description: The ID of the category to filter menu items by.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of menu items for the specified category.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MenuItem'
+        '404':
+          description: No menu items found for the specified category.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+      tags:
+        - Menu Items
+definitions:
+  MenuItem:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      price:
+        type: number
+        format: float
+      category_id:
+        type: string

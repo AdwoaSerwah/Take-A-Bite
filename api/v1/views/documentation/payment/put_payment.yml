@@ -1,0 +1,25 @@
+---
+put:
+  summary: "Update an existing payment"
+  description: "Modifies an existing payment object by ID"
+  parameters:
+    - name: "payment_id"
+      in: "path"
+      description: "ID of the payment to update"
+      required: true
+      type: "string"
+    - name: "Payment"
+      in: "body"
+      description: "Payment object with updated data"
+      required: true
+      schema:
+        $ref: "#/definitions/Payment"
+  responses:
+    200:
+      description: "Payment updated successfully"
+      schema:
+        $ref: "#/definitions/Payment"
+    400:
+      description: "Invalid input data"
+    404:
+      description: "Payment not found"

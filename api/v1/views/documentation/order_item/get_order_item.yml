@@ -1,0 +1,17 @@
+---
+get:
+  summary: "Retrieve a specific order item"
+  description: "Returns a single order item object by ID"
+  parameters:
+    - name: "order_item_id"
+      in: "path"
+      description: "ID of the order item to retrieve"
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: "The order item object"
+      schema:
+        $ref: "#/definitions/OrderItem"
+    404:
+      description: "Order item not found"

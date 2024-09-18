@@ -1,0 +1,25 @@
+---
+put:
+  summary: "Update an existing order item"
+  description: "Modifies an existing order item object by ID"
+  parameters:
+    - name: "order_item_id"
+      in: "path"
+      description: "ID of the order item to update"
+      required: true
+      type: "string"
+    - name: "OrderItem"
+      in: "body"
+      description: "Order item object with updated data"
+      required: true
+      schema:
+        $ref: "#/definitions/OrderItem"
+  responses:
+    200:
+      description: "Order item updated successfully"
+      schema:
+        $ref: "#/definitions/OrderItem"
+    400:
+      description: "Invalid input data"
+    404:
+      description: "Order item not found"

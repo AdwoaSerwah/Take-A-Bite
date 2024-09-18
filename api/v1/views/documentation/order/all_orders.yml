@@ -1,0 +1,41 @@
+---
+get:
+  summary: List all orders
+  description: Retrieves a list of all order objects.
+  responses:
+    200:
+      description: A list of orders
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Order'
+    500:
+      description: Internal server error
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123'
+        user_id:
+          type: string
+          example: '456'
+        total_amount:
+          type: number
+          format: float
+          example: 29.99
+        status:
+          type: string
+          example: 'Pending'
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-09-01T12:00:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-09-01T12:00:00Z'

@@ -1,0 +1,18 @@
+---
+post:
+  summary: "Create a new payment"
+  description: "Adds a new payment to the system"
+  parameters:
+    - name: "Payment"
+      in: "body"
+      description: "Payment object to be created"
+      required: true
+      schema:
+        $ref: "#/definitions/Payment"
+  responses:
+    201:
+      description: "Payment created successfully"
+      schema:
+        $ref: "#/definitions/Payment"
+    400:
+      description: "Invalid input data"

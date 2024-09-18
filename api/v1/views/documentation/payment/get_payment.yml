@@ -1,0 +1,17 @@
+---
+get:
+  summary: "Retrieve a specific payment"
+  description: "Returns a single payment object by ID"
+  parameters:
+    - name: "payment_id"
+      in: "path"
+      description: "ID of the payment to retrieve"
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: "The payment object"
+      schema:
+        $ref: "#/definitions/Payment"
+    404:
+      description: "Payment not found"

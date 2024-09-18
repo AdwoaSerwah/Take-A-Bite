@@ -1,0 +1,48 @@
+swagger: '2.0'
+info:
+  title: Menu Items by Name
+  description: Endpoint to retrieve menu items filtered by name.
+  version: 1.0.0
+paths:
+  /menu_items/name/{name}:
+    get:
+      summary: Get Menu Items by Name
+      description: Retrieves a list of menu items that match a specific name (case-insensitive search).
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: The name to search for in menu items.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of menu items matching the specified name.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MenuItem'
+        '404':
+          description: No menu items found with the specified name.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+      tags:
+        - Menu Items
+definitions:
+  MenuItem:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      price:
+        type: number
+        format: float
+      category_id:
+        type: string

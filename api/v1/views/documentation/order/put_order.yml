@@ -1,0 +1,63 @@
+---
+put:
+  summary: Update an order
+  description: Updates a specific order by its ID.
+  parameters:
+    - in: path
+      name: order_id
+      required: true
+      schema:
+        type: string
+      description: The ID of the order to update
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            total_amount:
+              type: number
+              format: float
+              example: 34.99
+            status:
+              type: string
+              example: 'Completed'
+  responses:
+    200:
+      description: Order updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Order'
+    400:
+      description: Bad request
+    404:
+      description: Order not found
+    500:
+      description: Internal server error
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123'
+        user_id:
+          type: string
+          example: '456'
+        total_amount:
+          type: number
+          format: float
+          example: 29.99
+        status:
+          type: string
+          example: 'Pending'
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-09-01T12:00:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-09-01T12:00:00Z'

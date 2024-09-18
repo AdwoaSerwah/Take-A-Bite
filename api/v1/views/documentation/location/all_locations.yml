@@ -1,0 +1,11 @@
+---
+get:
+  summary: "Retrieve all locations"
+  description: "Returns a list of all locations"
+  responses:
+    200:
+      description: "A list of location objects"
+      schema:
+        type: "array"
+        items:
+          $ref: "#/definitions/Location"

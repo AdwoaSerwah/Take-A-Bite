@@ -1,0 +1,431 @@
+@media (min-width: 1175px){
+    .navbar, .menu-items, .footer-container, .menu-header {
+        max-width: 1320px;
+    }
+}
+
+
+@media (max-width: 1174px){
+    .navbar, .menu-items, .footer-container, .menu-header {
+        max-width: 1000px;
+    }
+
+    .menu-search {
+        width: 70% !important;
+    }
+}
+
+
+@media (max-width: 894px){
+    .navbar, .menu-items, .footer-container, .menu-header {
+        max-width: 665px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    #right {
+        text-align: left !important;
+    }
+
+    .footer-col {
+        width: 100% !important;
+    }
+
+    .menu-search {
+        width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width: 327px) {
+    .categories {
+        gap: 0px !important;
+    }
+}
+
+@media screen and (max-width: 274px) { /*259px*/
+    .price-cart {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start !important;
+        /*border: #273b02 solid;*/
+        padding: 0;
+    }
+
+    .cart-col {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .quantity-counter {
+        width: 100% !important;
+    }
+
+    .menu-item-info {
+        padding: 10px !important;
+    }
+
+
+    .menu-header {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+
+.menu-header {
+    background: url(../images/pizza-pizza-filled-with-tomatoes-salami-olives.jpg) center/cover no-repeat;
+    height: 100%;
+    width: 100%;
+    /*border: blue solid 3px;*/
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.2rem;
+    align-items: center;
+    position: relative; /* Needed for pseudo-element positioning */
+    z-index: 1;
+
+}
+
+.menu-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 42, 0, 0.7); /* Adjust the color and opacity here */
+    z-index: 0; /* Ensure it sits on top of the background image but below content */
+}
+
+.menu-header > * {
+    position: relative; /* Ensure content sits above the pseudo-element */
+    z-index: 2;
+}
+
+.menu-title {
+    color: #f1ecbd;
+    font-size: calc(1.5rem + 1.5vw);
+    font-weight: 900;
+    /*border: palevioletred solid 3px;*/
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.categories, .menu-search,
+#menu-search-input {
+    font-size: 1.2rem;
+}
+
+.menu-search {
+    /*margin: 20px 0;*/ /* Adds some space around the search bar */
+    /*text-align: center;*/
+    /*border: 3px solid black;*/
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    width: 53%;
+}
+
+#menu-search-input {
+    width: 100%; /* Adjust the width of the input field */
+    /*flex-grow: 1;*/
+    padding: 10px; /* Padding for the input field */
+    border: 2px solid #eae5b6; /* Border color to match the menu */
+    border-radius: 8px; /* Rounded corners for left side */
+    outline: none; /* Remove the default outline */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    transition: border-color 0.3s ease, width 0.3s ease; /* Smooth transition for width */
+    /*max-width: 50%;*/
+    color: #273b02;
+}
+
+#menu-search-input:focus {
+    border-color: #446703; /* Changes border color on focus */
+}
+
+.search-icon {
+    position: absolute; /* Position the icon inside the input */
+    right: 15px; /* Space from the right edge */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for vertical center */
+    color: #999; /* Color of the icon */
+    pointer-events: none; /* Prevent the icon from blocking input interaction */
+}
+
+
+.categories li.active {
+    background-color: #598901;
+    color: #e8e6c2;
+}
+
+.categories li {
+    padding: 7px 25px;
+    cursor: pointer;
+    border-radius: 25px;
+    color: #e8e6c2;
+    flex-wrap: wrap;
+    white-space: wrap;
+    font-weight: 900;
+}
+
+.categories li:hover {
+    color: #7bb115;
+    transition: .3s;
+}
+
+.categories li.active:hover {
+    color: #e8e6c2;
+
+}
+
+
+
+.categories {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    /*margin: 45px 0 45px 0;*/
+    /*border: white 3px solid;*/
+    /*gap: 20px;*/
+}
+
+
+.menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: left;
+    /*border: solid greenyellow 3px;*/
+    /*align-items: stretch;*/
+    /*min-height: 100vh;*/
+}
+
+.no-results-message, .suggestion-message {
+    display: none;
+    text-align: center;
+    /*border: solid 3px green;*/
+    padding: 0;
+    /*font-weight: 900;*/
+    
+}
+
+.suggestion-message {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.no-results-message {
+    font-size: 1.3rem;
+}
+
+.no-results-partial {
+    min-height: 120px;
+}
+
+.menu-item {
+    display: flex;
+    flex: 1 1 260px; /* flex-grow: 1; flex-shrink: 1; flex-basis: 313px; */
+    min-width: 260px; /* Minimum width of the item */
+    max-width: 320px; /* Maximum width of the item */
+    box-sizing: border-box; /* Includes padding and border in the width calculation */
+    background-color: #eae5b6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    /*min-height: 300px;*/
+    flex-direction: column;
+    justify-content: space-between;
+    /*border: saddlebrown solid 3px;*/
+  }  
+
+
+.menu-item img {
+    width: 100%;
+    height: 180px;
+    /*flex-grow: 1;*/
+    object-fit: cover;
+    
+    /*object-fit: contain;*/
+    /*display: block;*/
+    /*border: 3px green solid;*/
+    
+}
+
+.menu-item-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    /*align-items: flex-start;*/
+}
+
+.menu-item-info h2 {
+    /*margin: 0 0 70px;*/
+    padding-bottom: 5px;
+    margin-bottom: auto;
+    /*border: solid goldenrod 3px;*/
+}
+
+.menu-item-info p {
+    margin: 0;
+}
+
+.menu-item-info > p {
+    /*color: red;*/
+    margin-top: auto;
+}
+
+.price {
+    font-size: 1.2em;
+    color: #5f9004;
+    color: #3a5a00;
+    font-weight: 900;
+    /*padding-top: 5px;*/
+    /*margin-bottom: 20px;*/
+    /*border: red solid 3px;*/
+}
+
+.price-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    /*border: blue solid 3px;*/
+    margin-top: auto;
+}
+
+.price-cart a i {
+    font-size: 22px;
+    color:#e08f15;
+    padding: 6px;
+    border-radius: 50px;
+    border: solid #e08f15 2px;
+}
+
+.add-cart, .view-cart {
+    border-radius: 30px;
+    padding: 6px;
+    color:#e8e6c2;
+    width: 100% !important;
+    /*border: greenyellow 3px solid;*/
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /*font-weight: 900;*/
+    font-size: 1.2rem;
+    font-family: 'Heebo', 'Open Sans', sans-serif;    
+}
+
+.add-cart {
+    background-color: /*#e89315*/ #e08f15;
+    border: solid #e09423 1px;
+}
+
+.add-cart:hover {
+    /*margin-right: 10px;*/
+    color:#e8e6c2;
+    background-color: #b87510;
+}
+
+.view-cart {
+    background-color: /*#e89315*/ #446703;
+    border: solid #273b02 1px;
+}
+
+.view-cart:hover {
+    /*margin-right: 10px;*/
+    color:#e8e6c2;
+    background-color: #273b02;
+}
+
+.quantity-counter {
+    display: flex; /* Aligns the elements horizontally */
+    align-items: center; /* Centers the text vertically within the counter */
+    border: 1px solid #a9b88c; /* Border for the entire counter */
+    border-radius: 30px; /* Rounded corners for the counter */
+    overflow: hidden; /* Ensures no part of the buttons overflow outside the border */
+    width: 90px;
+    gap: 4px;
+    /*border: red solid 3px;*/
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.quantity-counter button {
+    flex: 1; /* Ensures both buttons take equal width */
+    background-color: transparent; /* Removes default button background */
+    border: none; /* Removes default button border */
+    /*color: #333;*/ /* Text color for the buttons */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    /*font-size: 16px;*/ /* Font size for the buttons */
+    padding: 5px; /* Padding around the button text */
+    color: #273b02;
+    font-size: 1.2rem;
+    pointer-events: auto;
+}
+
+
+.quantity-counter span {
+    flex: 2; /* Ensures the quantity is twice as wide as the buttons */
+    text-align: center; /* Centers the quantity text */
+    font-size: 1rem; /* Font size for the quantity text */
+    font-weight: 400;
+    padding: 5px 0; /* Padding for the quantity text */
+}
+
+
+
+@media (max-width: 614px){
+    .navbar, .menu-items, .footer-container, .menu-header {
+        max-width: 100%;
+    }
+
+    .menu-item {
+        width: 100%;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        flex-direction: row;
+    }
+      
+    .menu-item img {
+        height: auto;
+        width: 50%;
+        /*flex: 1;*/
+        /*object-fit: none;*/
+    }
+}
+
+@media (max-width: 524px){
+    .navbar, .menu-items, .footer-container, .menu-header {
+        max-width: 360px;
+    }
+
+    .menu-item {
+        flex-direction: column !important;
+    }
+
+    .menu-item img {
+        width: 100%;
+        /*flex: 1;*/
+        object-fit: fill;
+    }
+}

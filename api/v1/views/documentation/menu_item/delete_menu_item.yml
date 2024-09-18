@@ -1,0 +1,18 @@
+---
+delete:
+  summary: Delete a menu item
+  description: Deletes a specific menu item by its ID.
+  parameters:
+    - in: path
+      name: menu_item_id
+      required: true
+      schema:
+        type: string
+      description: The ID of the menu item to delete
+  responses:
+    200:
+      description: Menu item deleted successfully
+    404:
+      description: Menu item not found
+    500:
+      description: Internal server error

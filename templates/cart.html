@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% set title = "Cart" %}
+    {% set custom_css = 'styles/cart.css' %}
+    {% set custom_js = 'scripts/cart.js' %}
+    
+    {% include 'head.html' %}
+    <body>
+        <!-- Loading Spinner -->
+        <!--<div id="loading-spinner" class="loading-spinner">
+            <div class="spinner"></div>
+        </div>-->
+        
+        <!-- Include the common header -->
+        {% include 'header.html' %}
+        
+        <main class="cart-container">
+            <h2 class="main-header">Your Cart</h2>
+            <section class="cart-items main-container">
+                {% if cart_items %}
+                    <div class="main-row">
+                        <ul class="cart-list">
+                            {% for item in cart_items %}
+                            <li class="cart-item">
+                                <div class="cart-item-details">
+                                    <div class="img-price">
+                                        <img src="{{ url_for('static', filename=item.menu_item.image_url) }}" alt="{{ item.menu_item.name }}" class="cart-item-image">
+                                    
+                                    
+                                        <div class="name-price">
+                                            <h3 class="cart-item-name">{{ item.menu_item.name }}</h3>
+                                            <p class="cart-item-price">GH₵ {{ item.menu_item.price }}</p>
+
+                                            <!--<div class="">
+                                                <button class="quantity-decrease">-</button>
+                                                <input type="number" value="{{ item.quantity }}" class="quantity-input" min="1">
+                                                <button class="quantity-increase">+</button>
+                                            </div>-->
+                                        </div>
+
+                                        <p class="cart-item-total"><span>Total </span><span>GH₵ {{ item.quantity * item.menu_item.price }}</span></p>
+                                    </div>
+
+                                    <div class="quantity-remove">
+                                        <div class="quantity-counter">
+                                            <button class="quantity-btn plus {% if item.id in cart_items %}faded-icon{% endif %}" onclick="decrementQuantity(this)">−</button>
+                                            <span class="quantity">{{ item.quantity }}</span>
+                                            <button class="quantity-btn minus {% if item.id in cart_items %}faded-icon{% endif %}" onclick="incrementQuantity(this)">+</button>
+                                        </div>
+                                       
+                                        <button class="remove-item"><i class="fas fa-trash fa-fw"></i> Remove</button>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            <li class="add-more">
+                                <a href="{{ url_for('html_views.menu') }}">
+                                    <i class="fas fa-plus-circle fa-fw"></i> Add More
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Delivery/Pickup Selection -->
+                        <div class="delivery-option">
+                            <h4>Select Delivery or Pickup:</h4>
+                            <select id="delivery-option">
+                                <option value="pickup">Pickup</option>
+                                {% for location in locations %}
+                                <option value="{{ location.id }}">Delivery to {{ location.name }} (GH₵ <span class="location_price">{{ location.delivery_price }}</span>)</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+
+                        <!-- Payment Method Selection -->
+                        <div class="payment-method">
+                            <h4>Select Payment Method:</h4>
+                            <label>
+                                <input type="radio" name="payment_method" value="Cash">
+                                Cash
+                            </label>
+                            <label>
+                                <input type="radio" name="payment_method" value="MTN Mobile Money" checked>
+                                MTN Mobile Money
+                            </label>
+                            <label>
+                                <input type="radio" name="payment_method" value="Vodafone Cash">
+                                Vodafone Cash
+                            </label>
+                            <label>
+                                <input type="radio" name="payment_method" value="AirtelTigo Money">
+                                AirtelTigo Money
+                            </label>
+
+                            <label>
+                                <input type="radio" name="payment_method" value="Debit/Credit Card">
+                                Debit/Credit Card
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="cart-summary">
+                        <h3>Order Summary</h3>
+                        <p class="cart-subtotal">
+                            <span>Subtotal</span> 
+                            <span>GH₵ <span class="subtotal">{{ cart_subtotal }}</span></span>
+                        </p>
+                        <p class="cart-delivery">
+                            <span>Delivery</span> <span>GH₵ <span class="delivery"></span></span>
+                        </p>
+                        <p class="cart-total">
+                            <span>Total</span> <span>GH₵ <span class="total">{{ cart_subtotal }}</span></span>
+                        </p>
+                        
+                        <button class="checkout-btn">Checkout</button>
+                    </div>
+                    
+                {% else %}
+                    <p>Your cart is empty.</p>
+                    <button>Add items to cart</button>
+                {% endif %}
+            </section>
+        </main>
+
+        {% include 'footer.html' %}
+
+        <script>
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownBtn = document.querySelector('.dropdown-btn');
+            const dropdownContent = document.querySelector('.dropdown-content');
+        
+            // Toggle dropdown open/close
+            dropdownBtn.addEventListener('click', function () {
+                dropdown.classList.toggle('active');
+                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            });
+        
+            // Select dropdown option and display in button
+            dropdownContent.addEventListener('click', function (e) {
+                if (e.target && e.target.nodeName === "DIV") {
+                    dropdownBtn.textContent = e.target.textContent; // Update button text
+                    dropdownContent.style.display = 'none'; // Close the dropdown
+                    dropdown.classList.remove('active');
+                    console.log('Selected value:', e.target.getAttribute('data-value')); // Log the selected value (you can use this for form submissions)
+                }
+            });
+        
+            // Close dropdown if clicked outside
+            window.addEventListener('click', function (e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdownContent.style.display = 'none';
+                    dropdown.classList.remove('active');
+                }
+            });
+        </script>
+        
+    </body>
+</html>

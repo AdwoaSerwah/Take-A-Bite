@@ -1,0 +1,110 @@
+<header>
+    <nav class="navbar">
+        <div class="ham-logo">
+            <div class="logo">
+                <a href="{{ url_for('html_views.home') }}" class="{{ 'active' if request.endpoint == 'html_views.home' else '' }}">
+                    <i class="fa fa-utensils me-3"></i><span>Take-A-Bite</span>
+                </a>
+            </div>
+
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="{{ url_for('html_views.home') }}" class="{{ 'active' if request.endpoint == 'html_views.home' else '' }}">
+                    <i class="fas fa-home  fa-fw"></i> HOME
+                </a>
+            </li>
+            <!--<li>
+                <a href="{{ url_for('html_views.about') }}" class="{{ 'active' if request.endpoint == 'html_views.about' else '' }}">
+                    <i class="fas fa-info-circle  fa-fw"></i> ABOUT
+                </a>
+            </li>-->
+            <li>
+                <a href="{{ url_for('html_views.menu') }}" class="{{ 'active' if request.endpoint == 'html_views.menu' else '' }}">
+                    <i class="fas fa-utensils  fa-fw"></i> MENU
+                </a>
+            </li>
+            <!-- <li><a href="{{ url_for('html_views.contact') }}" class="{{ 'active' if request.endpoint == 'html_views.contact' else '' }}"><i class="fas fa-envelope fa-fw"></i> CONTACT</a></li> -->
+            
+            <!-- User Profile Dropdown -->
+            <li class="dropdown">
+                {% if user %}
+                    <span class="dropdown-toggle
+                        {% set active_endpoints = [
+                            'html_views.logout', 
+                            'html_views.account_management' 
+                        ] %}
+                        {{ 'active' if request.endpoint in active_endpoints else '' }}">
+                        <i class="fa fa-user-circle fa-fw"></i> {{ username }} 
+                        <i class="fas fa-caret-down dropdown-icon fa-fw"></i>
+                    </span>
+                {% else %}
+                    <span class="dropdown-toggle
+                        {% set active_endpoints = [
+                            'html_views.signup', 
+                            'html_views.login', 
+                        ] %}
+                        {{ 'active' if request.endpoint in active_endpoints else '' }}">
+                        <i class="fas fa-user fa-fw"></i> PROFILE 
+                        <i class="fas fa-caret-down dropdown-icon fa-fw"></i>
+                    </span>
+                {% endif %}
+                                
+                <ul class="dropdown-content">
+                    {% if user %}
+                        <li>
+                            <li>
+                                <a href="{{ url_for('html_views.account_management') }}"><i class="fas fa-cog fa-fw"></i> SETTINGS</a>
+                            </li>
+                            <form action="{{ url_for('app_views.logout_user') }}" method="POST">
+                                <button type="submit" class="logout-button">
+                                    <i class="fas fa-sign-out-alt fa-fw"></i> <span>LOG OUT</span>
+                                </button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="signup-link">
+                            <a href="{{ url_for('html_views.signup') }}"><i class="fas fa-user-plus fa-fw"></i> SIGN UP</a>
+                        </li>
+                        <li class="login-link">
+                            <a href="{{ url_for('html_views.login') }}"><i class="fas fa-sign-in-alt fa-fw"></i> LOG IN</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </li>
+            
+            <!-- Cart with Counter -->
+            <!--<li>
+                <a href="{{ url_for('html_views.cart') }}" class="{{ 'active' if request.endpoint == 'html_views.cart' else '' }}">
+                    <span class="cart-icon">
+                        <i class="fas fa-shopping-cart fa-fw"></i>
+                        <span id="cart-counter" class="cart-counter">0</span>
+                    </span>
+                    CART
+                </a>
+            </li>-->
+            <!--<li class="nav-order">
+                <a href="{{ url_for('html_views.menu') }}">ORDER NOW</a>
+            </li>-->
+            <!-- Cart with Counter -->
+            <li>
+                <a href="{{ url_for('html_views.cart') }}" class="{{ 'active' if request.endpoint == 'html_views.cart' else '' }}">
+                    <span class="cart-icon">
+                        <i class="fas fa-shopping-cart fa-fw"></i>
+                        {% if cart_item_count > 0 %}
+                            <span id="cart-counter" class="cart-counter">{{ cart_item_count }}</span>
+                        {% else %}
+                            <span id="cart-counter" class="cart-counter" style="display: none;">{{ cart_item_count }}</span>
+                        {% endif %}
+                    </span>
+                    CART
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>

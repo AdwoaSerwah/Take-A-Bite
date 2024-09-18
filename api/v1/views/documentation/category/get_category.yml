@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: Categories API
+  version: 1.0.0
+paths:
+  /categories/{category_id}:
+    get:
+      summary: Retrieves a category by ID
+      tags:
+        - Categories
+      parameters:
+        - name: category_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The category details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The category ID
+                  name:
+                    type: string
+                    description: The name of the category
+        '404':
+          description: Category not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message

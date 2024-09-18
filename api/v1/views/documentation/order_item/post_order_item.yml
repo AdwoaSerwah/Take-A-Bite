@@ -1,0 +1,18 @@
+---
+post:
+  summary: "Create a new order item"
+  description: "Adds a new order item to the system"
+  parameters:
+    - name: "OrderItem"
+      in: "body"
+      description: "Order item object to be created"
+      required: true
+      schema:
+        $ref: "#/definitions/OrderItem"
+  responses:
+    201:
+      description: "Order item created successfully"
+      schema:
+        $ref: "#/definitions/OrderItem"
+    400:
+      description: "Invalid input data"

@@ -1,0 +1,48 @@
+get:
+  tags:
+    - Users
+  summary: Get a user
+  description: Retrieves a specific user by ID
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The ID of the user to retrieve
+  responses:
+    200:
+      description: A single user
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                example: "123456"
+              first_name:
+                type: string
+                example: "John"
+              last_name:
+                type: string
+                example: "Doe"
+              username:
+                type: string
+                example: "johndoe"
+              email:
+                type: string
+                example: "johndoe@example.com"
+              phone_number:
+                type: string
+                example: "0234567890"
+              created_at:
+                type: string
+                format: date-time
+                example: "2024-09-01T12:00:00Z"
+              updated_at:
+                type: string
+                format: date-time
+                example: "2024-09-01T12:00:00Z"
+    404:
+      description: User not found

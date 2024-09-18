@@ -1,0 +1,653 @@
+/* General styles for body and html */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Logout Button */
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    /*text-align: left;*/
+    font-size: 1.2rem;
+    font-weight: 900;
+    font-family: 'Open Sans', 'Heebo', sans-serif;
+    /* Add other styles as needed */
+}
+
+
+body {
+    font-family: 'Open Sans', 'Heebo', sans-serif;
+    background-color: #e8e6c2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #e8e6c2;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 100vh;
+    /*border: solid 5px palevioletred;*/
+    /*overflow-wrap: break-word;*/
+    word-wrap: break-word;    
+}
+
+
+h2, h3, h4 {
+    font-family: "Nunito", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+header, main, footer {
+    width: 100%;
+    /*border: solid #ffa500 2px;*/
+    padding-left: 25px;
+    padding-right: 25px;
+    /*justify-content: center;*/
+
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+    color: #273b02;
+    /*min-height: 100vh;*/
+    margin-bottom: 50px;
+}
+
+
+header {
+    display: flex;
+    justify-content: center;
+    font-weight: 900;
+    /*padding-top: 20px;
+    padding-bottom: 20px;*/
+    /*min-height: 85px;*/
+}
+
+header, footer {
+    background-color: #537e03;
+    font-size: 1.2rem;
+}
+
+.navbar {
+    display: flex;
+    position: relative;
+}
+
+
+
+.navbar, .main-container, .footer-container, .main-header {
+    /*border: blue solid 3px;*/
+    width: 100%;
+}
+
+@media (min-width: 1175px){
+    .navbar, .main-container, .footer-container, .main-header {
+        max-width: 1320px;
+    }
+}
+
+/*@media (max-width: 1174px){
+    .navbar, .main-container, .footer-container, .main-header {
+        max-width: 1000px;
+    }
+}*/
+
+@media (max-width: 850px){
+    .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    #right {
+        text-align: left !important;
+    }
+
+    .footer-col {
+        width: 100% !important;
+    }
+}
+
+
+/* Hover effect for the navbar links */
+.navbar .nav-links li a:hover,
+.navbar .logo a:hover,
+.nav-links span:hover,
+.navbar .nav-links li a.active ,
+.dropdown-toggle.active,
+.navbar .logo a {
+    color: #FEA116;
+}
+
+.ham-logo {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.navbar .logo a {
+    text-decoration: none;
+    /*color: #eae5b6;*/
+    font-size: calc(1.375rem + 1.5vw);
+    font-weight: 900;
+}
+
+.logo span {
+    margin-left: 15px;
+}
+
+.nav-order {
+    display: inline-block;
+    padding: 5px 25px;
+    background-color:#f79d16/*#ffbe33*/; /* Change to your preferred color */
+    color: #e8e6c2;
+    text-decoration: none;
+    border: none;
+    border-radius: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    text-align: center;
+    /*font-size: 16px;*/
+}
+
+.nav-order a:hover {
+    color: #e8e6c2 !important;
+    
+}
+
+.nav-order:hover {
+    background-color: #e08f15;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    /*gap: 20px;*/
+    flex-wrap: wrap;
+    /*position: relative;*/
+    /*padding-left: 50px;*/
+}
+
+.navbar .nav-links i{
+    margin-right: 5px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.navbar .nav-links li a {
+    text-decoration: none;
+    color: #e8e6c2;
+    transition: .3s;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Default arrow direction */
+.dropdown-icon {
+    transition: transform 0.3s ease; /* Smooth rotation transition */
+}
+
+/* Rotate arrow when dropdown content is active */
+.dropdown-content.active + .dropdown-toggle .dropdown-icon {
+    transform: rotate(180deg); /* Rotate 180 degrees to point up */
+}
+
+/* Optional: If you want the arrow to rotate when the parent has the active class */
+.dropdown-toggle.active .dropdown-icon {
+    transform: rotate(180deg); /* Rotate 180 degrees to point up */
+}
+
+/* .dropdown-content.active,
+.nested-dropdown-content.active*/
+.dropdown-content {
+    flex-direction: column;
+    background-color: #537e03;
+    display: none;
+    list-style: none;
+    z-index: 3;
+    /*gap: 20px;*/
+    /*position: relative;*/
+    /*top: 180%;*/
+    /*right: 200%;
+    top: 100px;*/
+    /*gap: 10px;*/
+    /* color: #537e03; */
+}
+
+.cart-icon {
+    position: relative;
+    display: inline-block;
+    /*border: 3px solid black;*/
+}
+
+/*.cart-counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}*/
+
+.cart-counter {
+    /*display: none;*/
+    position: absolute; /* Position absolutely within the relative container */
+    top: -5px; /* Adjust the vertical position */
+    right: -6px; /* Adjust the horizontal position */
+    background-color: #FEA116; /* Counter background color */
+    /*color: white;*/ /* Counter text color */
+    border-radius: 50%; /* Make it circular */
+    padding: 1px 6px; /* Size the counter */
+    font-size: 0.8rem; /* Text size */
+    /*font-weight: bold;*/ /* Bold text */
+}
+
+
+
+/* Ensuring cart counter is white when its parent link is active */
+.navbar .nav-links li a.active .cart-counter,
+.navbar .nav-links li a:hover .cart-counter {
+    color: #eae5b6; /* Color for cart counter */
+}
+
+/* If you want the hover effect to apply to active state as well */
+.navbar .nav-links li a.active:hover .cart-counter {
+    color: #eae5b6; /* Ensure it stays white on hover */
+}
+
+
+/*#cart-counter {
+    display: none;
+}*/
+
+
+
+/* Hamburger menu icon */
+.menu-icon {
+    display: none; /* Hide by default */
+    font-size: 28px;
+    color: #e8e6c2;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+
+
+
+@media (min-width: 992px) {
+    .navbar {
+        /*flex-direction: row !important;*/
+        justify-content: space-between ;
+        align-items: center;
+        /*gap: 50px;*/
+    }
+
+    .nav-links {
+        display: flex; /* Show the nav-links on larger screens */
+        gap: 30px;
+        align-items: center;
+        /*color: brown;*/
+    }
+
+    /*.dropdown:hover > .dropdown-content,
+    .nested-dropdown:hover > .nested-dropdown-content,*/
+    .dropdown-content.active {
+        display: flex;
+        position: absolute;
+        gap: 5px;
+        min-width: 215px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        right: 0px;
+        left: -13px;
+    }
+
+    .dropdown li i, .dropdown .logout-button i{
+        padding-left: 15px;
+        margin-right: 20px !important;
+        /*border: 5px solid red;*/
+    }
+
+    .dropdown-content {
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+
+    /*.nested-dropdown:hover > .nested-dropdown-content,*/
+    .dropdown-content.active {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+    }
+}
+
+
+/* Hide nav-links on smaller screens */ /*1030px*/
+@media (max-width: 991px) {
+    /*.navbar, .main-container, .footer-container {
+        max-width: 800px;
+    }*/
+
+    .menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .ham-logo {
+        display: flex;
+        border-bottom: solid rgb(5, 85, 5) 1px;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%; 
+        padding-top: 15px; 
+        padding-bottom: 15px;
+        /* gap: 15px; */
+    }
+
+    .nav-links {
+        display: none; /* Hide by default */
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        background-color: #537e03;
+        width: 100%;
+        padding: 10px 0;
+        gap: 5px;
+    }
+
+    /* Color when the menu is active */
+    .menu-icon.active i {
+        color: #FEA116;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li i {
+        margin-right: 20px;
+        /*border: solid brown 3px;*/
+        /*padding-left: 5px;*/
+    }
+
+    /*.dropdown:hover > .dropdown-content,
+    .nested-dropdown:hover > .nested-dropdown-content*/
+    .dropdown-content.active {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    /*.dropdown li i{
+        padding-left: 5px;
+        margin-right: 5px;
+    }*/
+
+    .dropdown-content {
+        padding-top: 3px;
+        /*padding-bottom: 3px;*/
+    }
+}
+
+
+@media screen and (max-width: 274px) { /*259px*/
+    .nav-order {
+        /*padding: 0 !important;*/
+        padding-right: 0;
+        padding-left: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links li i {
+        margin-right: 0;
+    }
+
+    .ham-logo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header, main, footer {
+        padding-left: 0px;
+        padding-right: 0px; 
+    }
+
+    .navbar, .footer-container, .main-header {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-left {
+    animation: slideInFromLeft 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bounce-in {
+    animation: bounceIn 0.6s ease-out;
+}
+
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 0.5s ease-out;
+}
+
+
+@keyframes rotateIn {
+    from {
+        transform: rotate(-200deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0);
+        opacity: 1;
+    }
+}
+
+.rotate-in {
+    animation: rotateIn 0.5s ease-out;
+}
+
+
+@keyframes flipIn {
+    from {
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateX(0);
+        opacity: 1;
+    }
+}
+
+.flip-in {
+    animation: flipIn 0.6s ease-out;
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 1s infinite;
+}
+
+
+
+.faded-icon {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+
+footer {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    
+}
+
+.footer-container {
+    margin: 0 auto;
+    /*border: black solid 3px;*/
+}
+
+footer .footer-row {
+    display: flex;
+    justify-content: space-between;
+    /*padding-top: 100px;*/
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    /*border: solid yellow 5px;*/
+    width: 100%;
+}
+
+footer .footer-col {
+    /*flex-wrap: wrap;*/
+    width: 33%;
+    display: block;
+    /*flex-direction: column;*/
+    /*border: solid 2px pink;*/
+    /*text-align: center;*/
+    /*align-items: flex-end;*/
+
+}
+
+.footer-col h3 {
+    margin-bottom: 12px;
+}
+
+.footer-col p i {
+    margin-right: 6px;
+}
+
+.footer p {
+    flex-wrap: wrap;
+}
+
+.footer-col .handles i {
+    margin-right: 0;
+}
+
+.footer-col .handles a {
+    color: #e8e6c2;
+    border: solid 2px #e8e6c2;
+    padding: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+
+}
+
+.footer-col .handles {
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    margin-top: 10px;
+    /*justify-content: center;*/
+}
+
+/*#fb {
+    padding: 0px 2px;
+}*/
+
+footer .copy{
+    text-align: center;
+}
+
+#right {
+    text-align: right;
+}

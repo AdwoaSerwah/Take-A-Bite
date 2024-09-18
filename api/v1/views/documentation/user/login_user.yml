@@ -1,0 +1,32 @@
+---
+post:
+  summary: Login a user
+  description: Authenticates a user and starts a session.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            username:
+              type: string
+              example: jdoe
+            password:
+              type: string
+              example: password123
+  responses:
+    '200':
+      description: Successfully logged in
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Successfully logged in
+    '400':
+      description: Bad request, invalid credentials or missing fields
+    '401':
+      description: Unauthorized, invalid credentials

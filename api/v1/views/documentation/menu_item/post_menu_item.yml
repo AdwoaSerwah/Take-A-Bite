@@ -1,0 +1,60 @@
+---
+post:
+  summary: Create a menu item
+  description: Creates a new menu item.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - price
+            - description
+            - category_id
+          properties:
+            name:
+              type: string
+              example: 'Pizza Margherita'
+            price:
+              type: number
+              format: float
+              example: 12.99
+            description:
+              type: string
+              example: 'Classic cheese pizza with tomatoes'
+            category_id:
+              type: string
+              example: 'e8f24d27-a340-4b20-bd99-011b9d395ea4'
+  responses:
+    201:
+      description: Menu item created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MenuItem'
+    400:
+      description: Bad request
+    500:
+      description: Internal server error
+components:
+  schemas:
+    MenuItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123'
+        name:
+          type: string
+          example: 'Pizza Margherita'
+        price:
+          type: number
+          format: float
+          example: 12.99
+        description:
+          type: string
+          example: 'Classic cheese pizza with tomatoes'
+        category_id:
+          type: string
+          example: 'e8f24d27-a340-4b20-bd99-011b9d395ea4'

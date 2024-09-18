@@ -1,0 +1,554 @@
+main {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: relative;
+}
+
+.cart-container .main-header {
+    background-color: #f8f7eb;
+    /*border-bottom: 1px solid #ddd;*/
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: calc(1rem + 1.5vw);
+    /*text-align: center;*/
+    /*position: relative;*/
+}
+
+.cart-list, .cart-summary, .main-header, .delivery-option, .payment-method {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f7eb;   
+}
+
+
+
+.cart-items {
+    /*flex: 0 1 60%;*/
+    /*border: #5cb85c solid 2px;*/
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    /*flex-wrap: wrap;*/
+    
+
+}
+
+.main-row {
+    width: 65%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.cart-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    /*border: solid yellow 2px;*/
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.cart-item {
+    display: flex;
+    align-items: baseline;
+    /*margin-bottom: 20px;*/
+    border-top: 1px solid #ddd;
+    flex-wrap: wrap;
+    /*border: solid brown 2px;*/
+}
+
+.cart-item, .add-more, .delivery-option, .payment-method {
+    padding: 10px 15px;
+    /*border: solid blue 2px;*/
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /*border: border solid palevioletred 2px;*/
+}
+
+.img-price {
+    /*border: solid brown 2px;*/
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.name-price {
+    /*border: solid 2px orange;*/
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    /*align-items:flex-end;*/
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cart-item-total, .delivery-option h4, .payment-method h4 {
+    font-family: "Nunito", sans-serif;
+    
+    
+}
+
+.cart-item-total {
+    /*margin-bottom: auto;*/
+    /*margin-left: auto;*/
+    /*border: solid 2px black;*/
+
+    
+    /*font-size: 1.2rem;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    /*width: 150px;*/
+    /*border: #af3333 solid 2px;*/
+    margin-left: auto;
+}
+
+.cart-item-total span:first-child {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.cart-item-total span:last-child {
+    font-family: 'Open Sans', 'Heebo', sans-serif;
+    font-weight: 600;
+}
+
+
+
+.cart-item-name {
+    font-size: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    
+    /*border: purple 2px solid;*/
+}
+
+
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    /*border: solid red 2px;*/
+}
+
+.quantity-remove {
+    /*border: solid 2px greenyellow;*/
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: space-between;
+    padding-top: 10px;
+    align-items: center;
+}
+
+
+
+.quantity-counter {
+    display: flex; /* Aligns the elements horizontally */
+    align-items: center; /* Centers the text vertically within the counter */
+    border: 1px solid #a9b88c; /* Border for the entire counter */
+    border-radius: 30px; /* Rounded corners for the counter */
+    overflow: hidden; /* Ensures no part of the buttons overflow outside the border */
+    width: 120px;
+    gap: 4px;
+    /*border: red solid 3px;*/
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.quantity-counter button {
+    flex: 1; /* Ensures both buttons take equal width */
+    background-color: transparent; /* Removes default button background */
+    border: none; /* Removes default button border */
+    /*color: #333;*/ /* Text color for the buttons */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    /*font-size: 16px;*/ /* Font size for the buttons */
+    padding: 5px; /* Padding around the button text */
+    color: #273b02;
+    font-size: 1.2rem;
+    pointer-events: auto;
+}
+
+
+.quantity-counter span {
+    flex: 2; /* Ensures the quantity is twice as wide as the buttons */
+    text-align: center; /* Centers the quantity text */
+    font-size: 1rem; /* Font size for the quantity text */
+    font-weight: 400;
+    padding: 5px 0; /* Padding for the quantity text */
+}
+
+
+
+.remove-item {
+    background-color: #dc4d4d;
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.remove-item:hover {
+    background-color: #af3333;
+}
+
+.add-more {
+    
+    /*font-size: 24px;*/
+    border-top: 1px solid #ddd;
+    /*padding: 15px;*/
+}
+
+.add-more a {
+    /*border: yellow 2px solid;*/
+    text-decoration: none;
+    color: #4b6b0f;
+    
+    font-weight: 900;
+    font-size: 1.2rem;
+    font-family: "Nunito", sans-serif;
+}
+
+.add-more a i {
+    margin-right: 5px;
+}
+
+
+
+
+
+
+.cart-summary {
+    flex: 0 1 35%;
+    padding: 15px;
+    padding-top: 6px;
+    
+}
+
+.cart-summary h3 {
+    font-weight: 900;
+    font-size: 1.4rem;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+/*.delivery-select-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 300px; 
+}
+
+.delivery-select-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    background-color: #f8f7eb;
+    border: 1px solid #b9cf92;
+    color: #273b02;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.delivery-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f8f7eb;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #b9cf92;
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.delivery-dropdown-content div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.delivery-dropdown-content div:hover {
+    background-color: #b9cf92;
+    color: white;
+}
+
+.delivery-select-wrapper.active .delivery-select-btn::after {
+    content: '▲';
+    float: right;
+}
+
+.delivery-select-btn::after {
+    content: '▼';
+    float: right;
+}*/
+
+
+
+.payment-method label {
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    /*border: solid brown 2px;*/
+}
+
+.payment-method label:last-child {
+    border: none;
+}
+
+
+.payment-method input {
+    margin-right: 10px;
+}
+
+
+.cart-subtotal, .cart-total {
+    font-weight: 900;
+}
+
+.cart-total {
+    border-top: 1px solid #ddd;
+    margin-top: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.cart-summary p {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.checkout-btn {
+    width: 100%;
+    background-color: #e08f15;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: solid #e09423 1px;
+    font-size: 1.2rem;
+}
+
+
+.checkout-btn:hover {
+    background-color: #b87510;
+}
+
+.checkout-btn, .remove-item {
+    font-weight: 700;
+    
+    color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+
+}
+
+@media (min-width: 671px)
+{
+    .cart-item-total {
+        
+    }
+}
+
+@media (max-width: 670px) {
+    .cart-items {
+        flex-direction: column;
+        
+    }
+
+    .main-row {
+        width: 100%;
+    }
+
+    .cart-summary {
+        width: 100%;
+        /*flex: 0 1 100%;*/
+    }
+
+
+}
+
+@media (max-width: 414px) {
+    header, main, footer {
+        padding-left: 15px;
+        padding-right: 15px; 
+    }
+
+    .cart-item-name {
+        width: 100px;
+    }
+
+    .img-price {
+        gap: 5px;
+    }
+
+    /*.navbar, .footer-container, .main-header {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }*/
+}
+
+@media (max-width: 330px) {
+    header, main, footer {
+        padding-left: 0;
+        padding-right: 0; 
+
+    }
+
+    .navbar, .footer-container,
+    .main-header, .cart-item,
+    .add-more, .delivery-option,
+    .payment-method {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .quantity-counter {
+        width: 100px;
+    }
+
+    .remove-item {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 290px) {
+    .img-price {
+        flex-direction: column;
+    }
+
+    .name-price, .cart-item-total {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        align-items: flex-end;
+    }
+
+    .cart-item-name {
+        width: 50%;
+    }
+
+    .cart-item-image {
+        width: 100%;
+        height: 100px;
+    }
+
+    /*.cart-list {
+        gap: 10px;
+    }*/
+
+    /*.cart-item {
+        display: flex;
+    }*/
+
+
+    .quantity-remove {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .quantity-counter, .remove-item {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+.cart-list, .cart-summary, .main-header, .delivery-option, .payment-method {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f7eb;   
+}
+.cart-item, .add-more, .delivery-option, .payment-method {
+    padding: 10px 15px;
+}
+
+.payment-method label {
+    display: block;
+}
+
+.delivery-option {
+    /*min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;*/
+    /*flex-wrap: wrap;*/
+    /*height: 90px;*/
+    /*border: #273b02 solid 3px;
+    justify-content: space-between;*/
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+.delivery-option h4{
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+/* Adjusting the select element */
+.delivery-option select {
+    /*width: 100%;*/
+    width: 100%;
+    font-size: 1rem;
+    color: #273b02;
+    padding: 6px 10px; /* Reduced padding */
+    font-family: 'Open Sans', 'Heebo', sans-serif !important;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Show "..." for long text */
+    border: solid #273b02 1px;
+    background-color: #f8f7eb;
+    border-radius: 6px;
+    padding-left: 25px;
+}
+
+/* Optional: If you want the options to behave similarly */
+.delivery-option select option {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

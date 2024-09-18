@@ -1,0 +1,18 @@
+---
+post:
+  summary: "Create a new location"
+  description: "Adds a new location to the system"
+  parameters:
+    - name: "Location"
+      in: "body"
+      description: "Location object to be created"
+      required: true
+      schema:
+        $ref: "#/definitions/Location"
+  responses:
+    201:
+      description: "Location created successfully"
+      schema:
+        $ref: "#/definitions/Location"
+    400:
+      description: "Invalid input data"

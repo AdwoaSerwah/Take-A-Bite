@@ -1,0 +1,15 @@
+---
+delete:
+  summary: "Delete a location"
+  description: "Removes a location from the system by ID"
+  parameters:
+    - name: "location_id"
+      in: "path"
+      description: "ID of the location to delete"
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: "Location deleted successfully"
+    404:
+      description: "Location not found"

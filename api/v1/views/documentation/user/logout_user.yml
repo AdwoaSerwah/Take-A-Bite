@@ -1,0 +1,19 @@
+---
+post:
+  summary: Logout a user
+  description: Ends the user’s session.
+  responses:
+    '200':
+      description: Successfully logged out
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Successfully logged out
+    '400':
+      description: Bad request, session not found
+    '401':
+      description: Unauthorized, user not logged in

@@ -1,0 +1,36 @@
+---
+get:
+  summary: List all menu items
+  description: Retrieves a list of all menu item objects.
+  responses:
+    200:
+      description: A list of menu items
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/MenuItem'
+    500:
+      description: Internal server error
+components:
+  schemas:
+    MenuItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123'
+        name:
+          type: string
+          example: 'Pizza Margherita'
+        price:
+          type: number
+          format: float
+          example: 12.99
+        description:
+          type: string
+          example: 'Classic cheese pizza with tomatoes'
+        category_id:
+          type: string
+          example: 'e8f24d27-a340-4b20-bd99-011b9d395ea4'

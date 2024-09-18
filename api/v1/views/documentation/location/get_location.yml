@@ -1,0 +1,17 @@
+---
+get:
+  summary: "Retrieve a specific location"
+  description: "Returns a single location object by ID"
+  parameters:
+    - name: "location_id"
+      in: "path"
+      description: "ID of the location to retrieve"
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: "The location object"
+      schema:
+        $ref: "#/definitions/Location"
+    404:
+      description: "Location not found"

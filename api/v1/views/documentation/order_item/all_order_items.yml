@@ -1,0 +1,11 @@
+---
+get:
+  summary: "Retrieve all order items"
+  description: "Returns a list of all order items"
+  responses:
+    200:
+      description: "A list of order item objects"
+      schema:
+        type: "array"
+        items:
+          $ref: "#/definitions/OrderItem"

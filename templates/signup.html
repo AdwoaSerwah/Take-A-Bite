@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/signup.css') }}?v={{ cache_id }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}?v={{ cache_id }}" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css?v={{ cache_id }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js?v={{ cache_id }}"></script>
+    <script src="{{ url_for('static', filename='scripts/signup.js') }}?v={{ cache_id }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form action="{{ url_for('app_views.post_user') }}" id="signup-form" method="POST">
+            <label for="first_name">First Name</label>
+            <input id="first_name" type="text" placeholder="e.g. Abigail" required maxlength="128">
+
+            <label for="last_name">Last Name</label>
+            <input id="last_name" type="text" placeholder="e.g. Gyamfi" required maxlength="128">
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="e.g. Abigyam123" required maxlength="10">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="e.g. abigail@gmail.com" required maxlength="128">
+
+            <label for="phone_number">Phone Number</label>
+            <input type="tel" id="phone_number" name="phone_number" placeholder="e.g. 0201234567" required maxlength="15"> <!--pattern="0[235][0-9]{8}"-->
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required maxlength="128">
+            <div class="checkbox-container">
+                <input type="checkbox" id="show-password">
+                <label for="show-password">Show Password</label>
+            </div>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required maxlength="128">
+            <!-- Checkbox to show/hide password -->
+            <div class="checkbox-container">
+                <input type="checkbox" id="show-confirm-password">
+                <label for="show-confirm-password">Show Password</label>
+            </div>
+
+            
+            <p class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+            </p>
+            
+            <button type="submit">Create Account</button>
+        </form>
+        <p class="login-link"><a href="{{ url_for('html_views.login') }}">Already have an account? Log in here</a></p>
+    </div>
+</body>
+</html>

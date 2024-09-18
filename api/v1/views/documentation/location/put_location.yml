@@ -1,0 +1,25 @@
+---
+put:
+  summary: "Update an existing location"
+  description: "Modifies an existing location object by ID"
+  parameters:
+    - name: "location_id"
+      in: "path"
+      description: "ID of the location to update"
+      required: true
+      type: "string"
+    - name: "Location"
+      in: "body"
+      description: "Location object with updated data"
+      required: true
+      schema:
+        $ref: "#/definitions/Location"
+  responses:
+    200:
+      description: "Location updated successfully"
+      schema:
+        $ref: "#/definitions/Location"
+    400:
+      description: "Invalid input data"
+    404:
+      description: "Location not found"

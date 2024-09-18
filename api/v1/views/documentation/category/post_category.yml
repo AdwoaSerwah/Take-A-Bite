@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  title: Categories API
+  version: 1.0.0
+paths:
+  /categories:
+    post:
+      summary: Creates a new category
+      tags:
+        - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the category
+                  example: "Desserts"
+      responses:
+        '201':
+          description: The created category
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The category ID
+                  name:
+                    type: string
+                    description: The name of the category
+        '400':
+          description: Bad request, missing fields or invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
