@@ -3,7 +3,7 @@
     {% set title = "Menu Items" %}
     {% set custom_css = 'styles/menu.css' %}
     {% set custom_js = 'scripts/menu.js' %}
-    
+
     {% include 'head.html' %}
     <body>
         <!-- Loading Spinner -->
@@ -18,9 +18,9 @@
 
                 <!-- Search bar with a button -->
                 <div class="menu-search">
-                    <input type="text" id="menu-search-input" placeholder="Search food in selected category">
+                    <input type="text" id="menu-search-input" placeholder="Search food in category">
                     <i class="fas fa-search search-icon"></i>
-                </div>            
+                </div>
 
                 <!-- Category filter -->
                 <ul class="categories">
@@ -57,18 +57,18 @@
                                     <button class="quantity-btn minus {% if item.id in cart_items %}faded-icon{% endif %}" onclick="incrementQuantity(this)">+</button>
                                 </div>
                             </div>
-            
+
                             <form id="add-to-cart-form" method="post" action="{{ url_for('app_views.add_to_cart') }}">
                                 <input type="hidden" name="menu_item_id" value="{{ item.id }}">
                                 <input type="hidden" name="quantity" value="{{ cart_items[item.id] if item.id in cart_items else 1 }}">
-                            
+
                                 <button type="submit" class="{% if item.id in cart_items %}view-cart{% else %}add-cart{% endif %}">
                                     <span class="cart-col">
                                         {% if item.id in cart_items %}
                                             <span>View Cart</span>
                                         {% else %}
                                             <span>Add  |  </span>
-                                            <span>GH₵ {{ item.price }}</span>                                        
+                                            <span>GH₵ {{ item.price }}</span>
                                         {% endif %}
                                     </span>
                                 </button>
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                 {% endfor %}
-            </section>   
+            </section>
         </main>
         {% include 'footer.html' %}
     </body>

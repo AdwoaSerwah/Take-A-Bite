@@ -2,7 +2,7 @@
 """ Flask Application """
 from os import environ
 from dotenv import load_dotenv
-from flask import Flask, make_response, jsonify, url_for
+from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from flasgger import Swagger
 from api.v1.mail_setup import mail

@@ -4,7 +4,9 @@ sqlalchemy==1.4.47
 python-dotenv==1.0.0
 flasgger==0.9.5
 mysqlclient==2.1.1
-python3-mysqldb
+# python3-mysqldb
 flask-login
 flask-bcrypt
 Flask-Mail
+python-dotenv
+flask-cors==4.0.1

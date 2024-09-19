@@ -68,6 +68,7 @@ def check_email():
     return render_template('check_email.html', cache_id=cache_id)
 
 
+@html_views.route('/', strict_slashes=False)
 @html_views.route('/home/', strict_slashes=False)
 def home():
     """ Index template rendering """

@@ -2,3 +2,6 @@
 secret_key.py
 create_user
 setup_mysql_dev.sql
+venv
+__pycache__/
+*.pyc
