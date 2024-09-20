@@ -117,43 +117,20 @@
                     </div>
                     
                 {% else %}
-                    <p>Your cart is empty.</p>
-                    <button>Add items to cart</button>
+                    <div class="empty-cart main-container">
+                        <!--<div class="empty-cart-icon"><i class="fa fa-cart-arrow-down fa-fw"></i></div>-->
+
+                        <!--<i class="fas fa-meh" style="font-size: 50px; color: #e8e6c2; background-color: black;"></i>
+                        <i class="fas fa-frown" style="font-size: 50px; color: #555;"></i>-->
+                        
+                        <p>Your cart is empty.</p>
+                        <div>Browse our menu categories and add items to cart!</div>
+                        <a href="{{ url_for('html_views.menu') }}">View Menu</a>
+                    </div>
                 {% endif %}
             </section>
         </main>
 
-        {% include 'footer.html' %}
-
-        <script>
-            const dropdown = document.querySelector('.dropdown');
-            const dropdownBtn = document.querySelector('.dropdown-btn');
-            const dropdownContent = document.querySelector('.dropdown-content');
-        
-            // Toggle dropdown open/close
-            dropdownBtn.addEventListener('click', function () {
-                dropdown.classList.toggle('active');
-                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-            });
-        
-            // Select dropdown option and display in button
-            dropdownContent.addEventListener('click', function (e) {
-                if (e.target && e.target.nodeName === "DIV") {
-                    dropdownBtn.textContent = e.target.textContent; // Update button text
-                    dropdownContent.style.display = 'none'; // Close the dropdown
-                    dropdown.classList.remove('active');
-                    console.log('Selected value:', e.target.getAttribute('data-value')); // Log the selected value (you can use this for form submissions)
-                }
-            });
-        
-            // Close dropdown if clicked outside
-            window.addEventListener('click', function (e) {
-                if (!dropdown.contains(e.target)) {
-                    dropdownContent.style.display = 'none';
-                    dropdown.classList.remove('active');
-                }
-            });
-        </script>
-        
+        {% include 'footer.html' %}   
     </body>
 </html>

@@ -4,6 +4,7 @@ main {
     padding-top: 0;
     padding-bottom: 0;
     position: relative;
+    /*border: solid 3px green;*/
 }
 
 .cart-container .main-header {
@@ -32,8 +33,6 @@ main {
     justify-content: space-between;
     align-items: flex-start;
     /*flex-wrap: wrap;*/
-    
-
 }
 
 .main-row {
@@ -93,10 +92,9 @@ main {
     flex-wrap: wrap;
 }
 
-.cart-item-total, .delivery-option h4, .payment-method h4 {
+.cart-item-total, .delivery-option h4,
+.payment-method h4, .empty-cart a {
     font-family: "Nunito", sans-serif;
-    
-    
 }
 
 .cart-item-total {
@@ -342,23 +340,25 @@ main {
     justify-content: space-between;
 }
 
-
 .checkout-btn {
     width: 100%;
-    background-color: #e08f15;
     padding: 8px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: solid #e09423 1px;
     font-size: 1.2rem;
 }
 
+.checkout-btn, .empty-cart a {
+    background-color: #e08f15;  
+    cursor: pointer;
+    /*border-radius: 5px;*/
+    border: solid #e09423 1px;    
+}
 
-.checkout-btn:hover {
+
+.checkout-btn:hover, .empty-cart a:hover {
     background-color: #b87510;
 }
 
-.checkout-btn, .remove-item {
+.checkout-btn, .remove-item, .empty-cart a {
     font-weight: 700;
     
     color: #f9f9f9;
@@ -538,6 +538,61 @@ main {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+
+.empty-cart {
+    /*border: solid purple 3px;*/
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    font-family: 'Open Sans', 'Heebo', sans-serif;
+    /*margin-top: auto;*/
+    /*margin-bottom: auto;*/
+}
+
+.empty-cart p {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    /*font-weight: 600;*/
+}
+
+.empty-cart div {
+    margin-bottom: 8px;
+    /*font-size: 1.1rem;*/
+}
+
+.empty-cart a {
+    color: #f5f3d4;
+    width: 150px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 4px;
+    /*border: white solid 5px;*/
+    /*font-weight: 400;*/
+}
+
+/*.empty-cart-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 50%;
+    border: solid 1px #e08f15e4;
+    background-color: #b8b7a8;
+   
+}*/
+
+/*.empty-cart-icon i{
+    font-size: 3.5rem;
+    color: #e08f15e4;
+    
+    border: solid 5px #e08f15e4;*/
+    /*border-radius: 50%;
+    padding: 30px 50px;
+    text-align: center;
+}*/
 
 
 
