@@ -155,7 +155,6 @@ No known bugs at this time.
 I will add my contributions very soon. 
 
 ## Authors
-Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)  
 Jhoan Zamora - [Github](https://github.com/jzamora5) / [Twitter](https://twitter.com/JhoanZamora10)  
 David Ovalle - [Github](https://github.com/Nukemenonai) / [Twitter](https://twitter.com/disartDave)
 Adwoa Serwah Kyei-Baffour - [Github](https://github.com/AdwoaSerwah)
