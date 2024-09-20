@@ -294,9 +294,17 @@ main {
     justify-content: space-between;
 }
 
-.checkout-btn {
+.checkout-btn-div {
     width: 100%;
-    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.checkout-btn {
+    width: 90%;
+    padding: 8px;
     font-size: 1.3rem;
     margin-top: 0px;
 }
@@ -448,13 +456,7 @@ main {
         /*flex: 0 1 100%;*/
     }
 
-    .checkout-btn-div {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
+
 
     .checkout-btn {
         width: 65%;
@@ -552,5 +554,13 @@ main {
     .name-price, .cart-item-total {
         flex-direction: column;
         gap: 0px;
+    }
+}
+
+@media (max-width: 220px) {
+    .cart-summary p {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
     }
 }
