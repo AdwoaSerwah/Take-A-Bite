@@ -206,3 +206,14 @@ class DBStorage:
             count = len(models.storage.all(cls).values())
 
         return count
+
+    
+    def get_payment_by_order(self, order_id):
+        """Fetch payment details for a given order_id."""
+        try:
+            payment = self.__session.query(Payment).filter_by(order_id=order_id).first()
+            return payment
+        except Exception as e:
+            print(f"Error fetching payment by order: {e}")
+            return None
+

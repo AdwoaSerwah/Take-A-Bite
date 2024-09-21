@@ -289,10 +289,24 @@ main {
     padding-bottom: 8px;
 }
 
-.cart-summary p {
+.cart-summary .cart-delivery {
+    display: none;
+    /*border: solid 3px brown;*/
+}
+
+.cart-summary p,
+.cart-delivery {
     display: flex;
     justify-content: space-between;
 }
+
+.cart-delivery {
+    display: none; /* Default hidden */
+}
+
+.cart-delivery.visible {
+    display: flex; /* Show when visible class is added */
+}s
 
 .checkout-btn-div {
     width: 100%;
@@ -493,7 +507,6 @@ main {
     header, main, footer {
         padding-left: 0;
         padding-right: 0; 
-
     }
 
     .navbar, .footer-container,

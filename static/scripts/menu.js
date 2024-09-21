@@ -13,36 +13,6 @@ $(document).ajaxStart(function () {
 }); */
 
 $(document).ready(function () {    
-    // Increment quantity
-    window.incrementQuantity = function (button) {
-        const menuItem = $(button).closest('.menu-item'); // Select the parent menu item
-
-        // Check if the button is in "Add to Cart" state
-        if (menuItem.find('.add-cart').length) {
-            const quantityElement = menuItem.find('.quantity'); // Select quantity within the parent menu item
-            const decrementButton = menuItem.find('.minus');
-            let quantity = parseInt(quantityElement.text());
-
-            if (quantity < 10) { // Ensure quantity doesn't exceed 10
-                quantity++;
-                quantityElement.text(quantity); // Update the displayed quantity
-                updateButtonAmount(menuItem); // Update the amount on the button
-
-                // Enable minus button if it's faded
-                if (quantity > 1) {
-                    decrementButton.removeClass('faded-icon');
-                    decrementButton.css('pointer-events', 'auto'); // Re-enable minus button
-                }
-            }
-            
-            // If quantity reaches 10, add the faded class to plus button
-            if (quantity === 10) {
-                $(button).addClass('faded-icon');
-                $(button).css('pointer-events', 'none'); // Disable plus button
-            }
-        }
-    };
-
     // Decrement quantity
     window.decrementQuantity = function (button) {
         const menuItem = $(button).closest('.menu-item'); // Select the parent menu item
@@ -58,20 +28,47 @@ $(document).ready(function () {
                 quantityElement.text(quantity); // Update the displayed quantity
                 updateButtonAmount(menuItem); // Update the amount on the button
 
-                // If quantity is less than 10, ensure the plus button is active
+                // Enable plus button if it's faded
                 if (quantity < 10) {
                     incrementButton.removeClass('faded-icon');
-                    incrementButton.css('pointer-events', 'auto'); // Re-enable plus button
+                    /*incrementButton.css('pointer-events', 'auto'); // Re-enable minus button*/
                 }
             }
 
-            // Enable plus button if it's faded
-            // menuItem.find('.increment').removeClass('faded-icon');
-
-            // If quantity reaches 1, add the faded class to minus button
+            // If quantity is below 1, add the faded class to minus button
             if (quantity === 1) {
                 $(button).addClass('faded-icon');
-                $(button).css('pointer-events', 'none'); // Disable minus button
+                /*$(button).css('pointer-events', 'none');*/ // Disable minus button
+            }
+        }
+    };
+
+    // Increment quantity
+    window.incrementQuantity = function (button) {
+        const menuItem = $(button).closest('.menu-item'); // Select the parent menu item
+
+        // Check if the button is in "Add to Cart" state
+        if (menuItem.find('.add-cart').length) {
+            const quantityElement = menuItem.find('.quantity'); // Select quantity within the parent menu item
+            const decrementButton = menuItem.find('.minus');
+            let quantity = parseInt(quantityElement.text());
+
+            if (quantity < 10) { // Ensure quantity doesn't go above 10
+                quantity++;
+                quantityElement.text(quantity); // Update the displayed quantity
+                updateButtonAmount(menuItem); // Update the amount on the button
+
+                // If quantity is above 1, ensure the minus button is active
+                if (quantity > 1) {
+                    decrementButton.removeClass('faded-icon');
+                    /*decrementButton.css('pointer-events', 'auto'); // Re-enable minus button*/
+                }
+            }
+
+            // If quantity reaches 10, add the faded class to plus button
+            if (quantity === 10) {
+                $(button).addClass('faded-icon');
+                /*$(button).css('pointer-events', 'none');*/ // Disable plus button
             }
         }
     };

@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('#reset-password-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
 
-        // const new_password = $('#password').val();.
+        const new_password = $('#password').val();
         const confirmPassword = $('#confirm-password').val();
 
         // Simple client-side validation

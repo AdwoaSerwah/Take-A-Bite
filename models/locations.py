@@ -4,6 +4,7 @@
 import models
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Numeric
+from sqlalchemy.orm import relationship
 
 
 class Location(BaseModel, Base):
@@ -13,6 +14,9 @@ class Location(BaseModel, Base):
 
         name = Column(String(128), nullable=False)
         delivery_price = Column(Numeric(10, 2), nullable=False)
+
+        # Relationship
+        orders = relationship("Order", back_populates="location")
     else:
         name = ""
         delivery_price = Numeric('0.00')

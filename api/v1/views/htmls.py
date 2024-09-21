@@ -132,10 +132,10 @@ def cart():
                            cart_items=cart_items)"""
 
 
-@html_views.route('/cart/', strict_slashes=False)
+"""@html_views.route('/cart/', strict_slashes=False)
 @check_authentication
 def cart():
-    """Cart template rendering"""
+    Cart template rendering
     cache_id = uuid.uuid4()
 
     # Use the helper function to get user and cart information
@@ -166,7 +166,357 @@ def cart():
                            cart_item_count=cart_item_count,
                            cart_items=enriched_cart_items,
                            cart_subtotal=cart_subtotal,
-                           locations=locations.values())
+                           locations=locations.values())"""
+
+
+"""@html_views.route('/cart/', strict_slashes=False)
+@check_authentication
+def cart():
+    Cart template rendering
+    cache_id = uuid.uuid4()
+
+    # Use the helper function to get user and cart information
+    user, username, cart_item_count, cart_items = get_user_and_cart_info()
+
+    # Ensure cart_items contains more information than just quantity (fetch MenuItem details)
+    enriched_cart_items = []
+    cart_subtotal = 0
+    for menu_item_id, quantity in cart_items.items():
+        menu_item = storage.get(MenuItem, menu_item_id)
+        if menu_item:
+            total_price = menu_item.price * quantity
+            cart_subtotal += total_price
+            enriched_cart_items.append({
+                'menu_item': menu_item,
+                'quantity': quantity,
+                'total_price': total_price
+            })
+
+    # Fetch available locations for delivery options
+    locations = storage.all(Location)
+
+    # Check for existing pending payment
+    existing_payment = storage.get_payment_by_order(user.id)  # Or whatever method you use to fetch payment by user
+    payment_method = existing_payment.method if existing_payment else 'Cash'
+
+    print('Payment method: ', payment_method)
+
+    # Render the cart.html template with the enriched cart data, location info, and payment method
+    return render_template('cart.html', 
+                           cache_id=cache_id, 
+                           user=user, 
+                           username=username, 
+                           cart_item_count=cart_item_count,
+                           cart_items=enriched_cart_items,
+                           cart_subtotal=cart_subtotal,
+                           locations=locations.values(),
+                           payment_method=payment_method)  # Pass the payment method"""
+
+
+"""@html_views.route('/cart/', strict_slashes=False)
+@check_authentication
+def cart():
+    Cart template rendering
+    cache_id = uuid.uuid4()
+
+    # Use the helper function to get user and cart information
+    user, username, cart_item_count, cart_items = get_user_and_cart_info()
+
+    # Ensure cart_items contains more information than just quantity (fetch MenuItem details)
+    enriched_cart_items = []
+    cart_subtotal = 0
+    for menu_item_id, quantity in cart_items.items():
+        menu_item = storage.get(MenuItem, menu_item_id)
+        if menu_item:
+            total_price = menu_item.price * quantity
+            cart_subtotal += total_price
+            enriched_cart_items.append({
+                'menu_item': menu_item,
+                'quantity': quantity,
+                'total_price': total_price
+            })
+
+    # Fetch available locations for delivery options
+    locations = storage.all(Location)
+
+    # Retrieve the user's pending order
+    existing_order = storage.get_pending_order_by_user(user.id)
+
+    # Check for existing pending payment based on the order ID
+    existing_payment = storage.get_payment_by_order(existing_order.id) if existing_order else None
+    payment_method = existing_payment.method if existing_payment else 'Cash'
+
+    print('Payment method: ', payment_method)
+
+    # Render the cart.html template with the enriched cart data, location info, and payment method
+    return render_template('cart.html', 
+                           cache_id=cache_id, 
+                           user=user, 
+                           username=username, 
+                           cart_item_count=cart_item_count,
+                           cart_items=enriched_cart_items,
+                           cart_subtotal=cart_subtotal,
+                           locations=locations.values(),
+                           payment_method=payment_method)  # Pass the payment method
+
+
+
+@html_views.route('/cart/', strict_slashes=False)
+@check_authentication
+def cart():
+    Cart template rendering
+    cache_id = uuid.uuid4()
+
+    # Use the helper function to get user and cart information
+    user, username, cart_item_count, cart_items = get_user_and_cart_info()
+
+    # Ensure cart_items contains more information than just quantity (fetch MenuItem details)
+    enriched_cart_items = []
+    cart_subtotal = 0
+    for menu_item_id, quantity in cart_items.items():
+        menu_item = storage.get(MenuItem, menu_item_id)
+        if menu_item:
+            total_price = menu_item.price * quantity
+            cart_subtotal += total_price
+            enriched_cart_items.append({
+                'menu_item': menu_item,
+                'quantity': quantity,
+                'total_price': total_price
+            })
+
+    # Fetch available locations for delivery options
+    locations = storage.all(Location)
+
+    # Retrieve the user's pending order
+    existing_order = storage.get_pending_order_by_user(user.id)
+
+    # If there is an order and it has a location, use that location; otherwise, use "Pickup"
+    selected_location = None
+    if existing_order and existing_order.location:
+        selected_location = existing_order.location.name
+    else:
+        selected_location = "Pickup"
+
+    # Check for existing pending payment based on the order ID
+    existing_payment = storage.get_payment_by_order(existing_order.id) if existing_order else None
+    payment_method = existing_payment.method if existing_payment else 'Cash'
+
+    print('Payment method: ', payment_method)
+
+    # Render the cart.html template with the enriched cart data, location info, and payment method
+    return render_template('cart.html', 
+                           cache_id=cache_id, 
+                           user=user, 
+                           username=username, 
+                           cart_item_count=cart_item_count,
+                           cart_items=enriched_cart_items,
+                           cart_subtotal=cart_subtotal,
+                           locations=locations.values(),
+                           selected_location=selected_location,  # Pass the selected location
+                           payment_method=payment_method)  # Pass the payment method
+"""
+
+
+"""@html_views.route('/cart/', strict_slashes=False)
+@check_authentication
+def cart():
+    cache_id = uuid.uuid4()
+
+    # Use the helper function to get user and cart information
+    user, username, cart_item_count, cart_items = get_user_and_cart_info()
+
+    # Ensure cart_items contains more information than just quantity (fetch MenuItem details)
+    enriched_cart_items = []
+    cart_subtotal = 0
+    for menu_item_id, quantity in cart_items.items():
+        menu_item = storage.get(MenuItem, menu_item_id)
+        if menu_item:
+            total_price = menu_item.price * quantity
+            cart_subtotal += total_price
+            enriched_cart_items.append({
+                'menu_item': menu_item,
+                'quantity': quantity,
+                'total_price': total_price
+            })
+
+    # Fetch available locations for delivery options
+    locations = {loc.id: loc for loc in storage.all(Location).values()}
+    print("Locations: ", locations)
+
+    # Define pickup_id based on the pickup location
+    pickup_id = next((loc.id for loc in locations.values() if loc.name == "Pickup"), None)
+    print("pickup id: ", pickup_id)
+
+    # Retrieve the user's pending order
+    existing_order = storage.get_pending_order_by_user(user.id)
+
+    # If there is an order and it has a location, use that location; otherwise, use "Pickup"
+    selected_location = None
+    delivery_fee = 0
+
+    if existing_order and existing_order.location:
+        selected_location = existing_order.location.name
+        delivery_fee = existing_order.location.delivery_price  # Get delivery price
+    else:
+        selected_location = "Pickup"
+
+    # Check for existing pending payment based on the order ID
+    existing_payment = storage.get_payment_by_order(existing_order.id) if existing_order else None
+    payment_method = existing_payment.method if existing_payment else 'Cash'
+
+    print('Payment method: ', payment_method)
+
+    # Render the cart.html template with the enriched cart data, location info, and payment method
+    return render_template('cart.html',
+                           existing_order=existing_order,
+                           cache_id=cache_id, 
+                           user=user, 
+                           username=username, 
+                           cart_item_count=cart_item_count,
+                           cart_items=enriched_cart_items,
+                           cart_subtotal=cart_subtotal,
+                           locations=locations.values(),  # Pass the location values only
+                           selected_location=selected_location,  # Pass the selected location
+                           payment_method=payment_method,  # Pass the payment method
+                           pickup_id=pickup_id,
+                           delivery_fee=delivery_fee)  # Pass the delivery fee"""
+
+
+"""@html_views.route('/cart/', strict_slashes=False)
+@check_authentication
+def cart():
+    cache_id = uuid.uuid4()
+
+    # Use the helper function to get user and cart information
+    user, username, cart_item_count, cart_items = get_user_and_cart_info()
+
+    # Ensure cart_items contains more information than just quantity (fetch MenuItem details)
+    enriched_cart_items = []
+    cart_subtotal = 0
+    for menu_item_id, quantity in cart_items.items():
+        menu_item = storage.get(MenuItem, menu_item_id)
+        if menu_item:
+            total_price = menu_item.price * quantity
+            cart_subtotal += total_price
+            enriched_cart_items.append({
+                'menu_item': menu_item,
+                'quantity': quantity,
+                'total_price': total_price
+            })
+
+    # Fetch available locations for delivery options
+    locations = {loc.id: loc for loc in storage.all(Location).values()}  # Ensure we're getting Location objects
+    print("Locations: ", locations)
+
+    # Define pickup_id based on the pickup location
+    pickup_id = next((loc.id for loc in locations.values() if loc.name == "Pickup"), None)
+    print("pickup id: ", pickup_id)
+
+    # Retrieve the user's pending order or None if no order exists
+    existing_order = storage.get_pending_order_by_user(user.id)
+
+    # Initialize selected_location and delivery_fee
+    selected_location = "Pickup"
+    delivery_fee = 0
+
+    if existing_order and existing_order.location:
+        selected_location = existing_order.location.name
+        delivery_fee = existing_order.location.delivery_price  # Get delivery price
+
+    # Check for existing pending payment based on the order ID
+    existing_payment = storage.get_payment_by_order(existing_order.id) if existing_order else None
+    payment_method = existing_payment.method if existing_payment else 'Cash'
+
+    print('Payment method: ', payment_method)
+
+    # Render the cart.html template
+    return render_template('cart.html',
+                           cache_id=cache_id,
+                           user=user,
+                           username=username,
+                           cart_item_count=cart_item_count,
+                           cart_items=enriched_cart_items,
+                           cart_subtotal=cart_subtotal,
+                           locations=locations.values(),
+                           selected_location=selected_location,
+                           existing_order=existing_order,  # Ensure this is passed
+                           payment_method=payment_method,
+                           pickup_id=pickup_id,
+                           delivery_fee=delivery_fee)"""
+
+
+@html_views.route('/cart/', strict_slashes=False)
+@check_authentication
+def cart():
+    """Cart template rendering"""
+    cache_id = uuid.uuid4()
+
+    # Use the helper function to get user and cart information
+    user, username, cart_item_count, cart_items = get_user_and_cart_info()
+
+    # Ensure cart_items contains more information than just quantity (fetch MenuItem details)
+    enriched_cart_items = []
+    cart_subtotal = 0
+    for menu_item_id, quantity in cart_items.items():
+        menu_item = storage.get(MenuItem, menu_item_id)
+        if menu_item:
+            total_price = menu_item.price * quantity
+            cart_subtotal += total_price
+            enriched_cart_items.append({
+                'menu_item': menu_item,
+                'quantity': quantity,
+                'total_price': total_price
+            })
+
+    # Fetch available locations for delivery options
+    locations = {loc.id: loc for loc in storage.all(Location).values()}  # Ensure we're getting Location objects
+    print("Locations: ", locations)
+
+    # Define pickup_id based on the pickup location
+    pickup_id = next((loc.id for loc in locations.values() if loc.name == "Pickup"), None)
+    print("pickup id: ", pickup_id)
+
+    # Retrieve the user's pending order or None if no order exists
+    existing_order = storage.get_pending_order_by_user(user.id)
+
+    # Initialize selected_location and delivery_fee
+    selected_location = "Pickup"
+    delivery_fee = 0
+
+    if existing_order and existing_order.location:
+        selected_location = existing_order.location.name
+        delivery_fee = existing_order.location.delivery_price  # Get delivery price
+
+    # Check for existing pending payment based on the order ID
+    existing_payment = storage.get_payment_by_order(existing_order.id) if existing_order else None
+    payment_method = existing_payment.method if existing_payment else 'Cash'
+
+    print('Payment method: ', payment_method)
+
+    # Render the cart.html template
+    return render_template('cart.html',
+                           cache_id=cache_id,
+                           user=user,
+                           username=username,
+                           cart_item_count=cart_item_count,
+                           cart_items=enriched_cart_items,
+                           cart_subtotal=cart_subtotal,
+                           locations=locations,  # Use locations as dict for easier lookup in template
+                           selected_location=selected_location,
+                           existing_order=existing_order,  # Ensure this is passed
+                           payment_method=payment_method,
+                           pickup_id=pickup_id,
+                           delivery_fee=delivery_fee)
+
+
+
+@html_views.route('/checkout/', strict_slashes=False)
+@check_authentication
+def checkout():
+    """Checkout template rendering"""
+    cache_id = uuid.uuid4()
+
+    return render_template('checkout.html', cache_id=cache_id)
 
 
 #@html_views.route('/cart/', strict_slashes=False)

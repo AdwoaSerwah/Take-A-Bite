@@ -16,7 +16,7 @@ class User(BaseModel, Base):
         __tablename__ = 'users'
         first_name = Column(String(128), nullable=False)
         last_name = Column(String(128), nullable=False)
-        username = Column(String(128), nullable=False, unique=True) # String(10)
+        username = Column(String(10), nullable=False, unique=True) # String(10)
         email = Column(String(128), nullable=False, unique=True)
         phone_number = Column(String(15), nullable=False, unique=True)
         # location = Column(String(256), nullable=True)

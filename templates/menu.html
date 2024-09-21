@@ -52,9 +52,9 @@
                             <div class="price-cart">
                                 <p class="price">GH₵ {{ item.price }}</p>
                                 <div class="quantity-counter">
-                                    <button class="quantity-btn plus {% if item.id in cart_items %}faded-icon{% endif %}" onclick="decrementQuantity(this)">−</button>
+                                    <button class="quantity-btn minus faded-icon" onclick="decrementQuantity(this)">−</button>
                                     <span class="quantity">{{ cart_items[item.id] if item.id in cart_items else 1 }}</span>
-                                    <button class="quantity-btn minus {% if item.id in cart_items %}faded-icon{% endif %}" onclick="incrementQuantity(this)">+</button>
+                                    <button class="quantity-btn plus {% if item.id in cart_items %}faded-icon{% endif %}" onclick="incrementQuantity(this)">+</button>
                                 </div>
                             </div>
 

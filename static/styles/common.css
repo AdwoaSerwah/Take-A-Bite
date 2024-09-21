@@ -565,7 +565,7 @@ header, footer {
 
 .faded-icon {
     opacity: 0.5;
-    pointer-events: none;
+    /*pointer-events: none;*/
     cursor: not-allowed !important;
 }
 
