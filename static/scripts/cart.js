@@ -182,7 +182,7 @@ $(document).ready(function() {
 
                     // Check the payment method and redirect accordingly
                     if (selectedPaymentMethod === 'Cash') {
-                        window.location.href = `/order-status/${orderID}`; // Redirect to order status for cash
+                        window.location.href = `/order-confirmed?order_id=${orderID}`; // Redirect to order status for cash
                     } else {
                         window.location.href = "/checkout"; // Redirect to checkout for other payment methods
                     }

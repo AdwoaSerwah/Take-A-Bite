@@ -47,7 +47,7 @@ $(document).ready(function() {
                         if (data.message) {
                             // window.location.href = "/order-status";
                             console.log("Order id: ", orderID);
-                            window.location.href = `/order-status/${orderID}`;
+                            window.location.href = `/order-confirmed?order_id=${orderID}`;
                         }
                         else {
                             alert(data.error);

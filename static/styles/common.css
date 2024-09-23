@@ -60,7 +60,7 @@ main {
     flex-direction: column;
     padding-top: 20px;
     padding-bottom: 20px;
-    /*align-items: center;*/
+    align-items: center;
     color: #273b02;
     /*min-height: 100vh;*/
     margin-bottom: 50px;

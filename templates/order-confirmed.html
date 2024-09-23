@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% set title = "Order Confirmed" %}
+    {% set custom_css = 'styles/order-confirmed.css' %}
+    <!--{% set custom_js = 'scripts/checkout.js' %}-->
+    
+    {% include 'head.html' %}
+<body>
+    <!-- Include the common header -->
+    {% include 'header.html' %}
+    <main>
+        <h2 class="confirmed-header main-header">Order Confirmed</h2>
+        <div class="confirmed-container main-container">
+            <h3>Thank you for your purchase!</h3>
+            <p>Hi {{ username }}, we are getting your order prepared. We will notify you when it is ready.</p>
+            <p class="duration">It will take about <strong>20 to 30 minutes</strong>.</p>
+            <a href="{{ url_for('html_views.order_status', order_id=order_id) }}" class="button">View Your Order</a>
+        </div>
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>

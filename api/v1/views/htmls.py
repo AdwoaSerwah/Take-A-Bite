@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Blueprint for HTML views """
-from flask import render_template, session, make_response
+from flask import render_template, session, make_response, request
 from api.v1.views import html_views
 import uuid
 from models.users import User
@@ -11,6 +11,7 @@ from api.v1.views.auth import check_authentication
 from utils.cart_utils import get_user_and_cart_info
 from models.menu_items import MenuItem
 from models.locations import Location
+from models.orders import Order
 # from utils.email_utils import send_password_reset_email 
 
 
@@ -243,7 +244,6 @@ def order_status(order_id):
     cache_id = uuid.uuid4()  # Generate a unique cache ID
     user, username, cart_item_count, cart_items = get_user_and_cart_info()
 
-    
     # Retrieve the order by ID
     order = storage.get_order_by_id(order_id)
     
@@ -262,6 +262,30 @@ def order_status(order_id):
                            cache_id=cache_id,
                            order=order_dict,
                            payment=payment,
+                           user=user,
+                           username=username,
+                           cart_item_count=cart_item_count)
+
+
+@html_views.route('/order-confirmed/', methods=['GET'], strict_slashes=False)
+@check_authentication
+def order_confirmed():
+    """Render the order confirmed page."""
+    cache_id = uuid.uuid4()  # Generate a unique cache ID
+    user, username, cart_item_count, _ = get_user_and_cart_info()
+
+    # Get the order ID from the request arguments
+    order_id = request.args.get('order_id')
+
+    # Retrieve the order by ID
+    order = storage.get(Order, order_id)  # Make sure to use your storage method correctly
+    
+    if not order or order.user_id != user.id:
+        return make_response(render_template('404.html'), 404)  # Handle order not found
+    
+    return render_template('order-confirmed.html',
+                           cache_id=cache_id,
+                           order_id=order_id,
                            user=user,
                            username=username,
                            cart_item_count=cart_item_count)
