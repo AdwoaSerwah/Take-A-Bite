@@ -5,7 +5,7 @@ from models import storage
 from flasgger.utils import swag_from
 from api.v1.views import app_views
 import json
-from models.orders import Order
+from models.orders import Order, OrderStatus
 from models.order_items import OrderItem
 from models.menu_items import MenuItem
 from models.payments import Payment, PaymentStatus
@@ -170,48 +170,6 @@ def add_to_cart():
     return make_response(jsonify({'message': 'Item added to cart successfully'}), 200)
 
 
-"""@app_views.route('/update_cart_item/<item_id>', methods=['POST'])
-def update_cart_item(item_id):
-        # Ensure request data is JSON
-    if not request.get_json():
-        return make_response(jsonify({'error': 'Invalid content type, expected JSON'}), 400)
-    
-    data = request.get_json()
-    new_quantity = data.get('quantity')
-    
-    print(f"New quantity: {new_quantity}")
-
-    # Fetch the order item
-    order_item = storage.get(OrderItem, item_id)
-    print(order_item)
-
-    if order_item and (new_quantity > 0 and new_quantity <= 10):
-        # Update the item quantity
-        order_item.quantity = new_quantity
-        storage.save()
-
-        # Recalculate total price for the item
-        item_total_price = order_item.quantity * order_item.menu_item.price
-
-        # Recalculate cart subtotal and item count
-        order = order_item.order
-        cart_subtotal = sum(item.quantity * item.menu_item.price for item in order.order_items)
-        cart_item_count = sum(item.quantity for item in order.order_items)
-
-        # Update the order total
-        order.total_amount = cart_subtotal
-        storage.save()
-
-        return jsonify({
-            'success': True,
-            'total_item_price': item_total_price,
-            'cart_subtotal': cart_subtotal,
-            'cart_item_count': cart_item_count
-        })
-
-    return jsonify({'success': False}), 400"""
-
-
 @app_views.route('/update_cart_item/<menu_item_id>', methods=['POST'])
 def update_cart_item(menu_item_id):
     """
@@ -277,65 +235,32 @@ def update_cart_item(menu_item_id):
     })
 
 
-"""@app_views.route('/remove_cart_item/<menu_item_id>', methods=['POST'])
-def remove_cart_item(menu_item_id):
-    # Fetch the order item
-    order_item = storage.get(OrderItem, menu_item_id)
-
-    if order_item:
-        order = order_item.order
-        # Delete the order item
-        storage.delete(order_item)
-        storage.save()
-
-        # Recalculate cart subtotal and item count after removal
-        cart_subtotal = sum(item.quantity * item.menu_item.price for item in order.order_items)
-        cart_item_count = sum(item.quantity for item in order.order_items)
-
-        # Update the order total
-        order.total_amount = cart_subtotal
-        storage.save()
-
-        return jsonify({'success': True, 'cart_subtotal': cart_subtotal, 'cart_item_count': cart_item_count})
-
-    return jsonify({'success': False}), 400
-"""
-
-
 @app_views.route('/remove_cart_item/<menu_item_id>', methods=['POST'])
 def remove_cart_item(menu_item_id):
-    """
-    Remove an item from the cart using the menu_item_id.
-    """
     user_id = session.get('user_id')
 
-    # Ensure the user is logged in
     if user_id is None:
         return make_response(jsonify({'error': 'User not logged in'}), 403)
 
-    # Get the user's pending order
     existing_order = storage.get_pending_order_by_user(user_id)
 
     if not existing_order:
         return make_response(jsonify({'error': 'No pending order found'}), 404)
 
-    # Find the matching order item by menu_item_id
-    order_item = None
-    for item in existing_order.order_items:
-        if item.menu_item_id == menu_item_id:
-            order_item = item
-            break
+    order_item = next((item for item in existing_order.order_items if item.menu_item_id == menu_item_id), None)
 
-    if order_item is None:
+    if not order_item:
         return make_response(jsonify({'error': 'Item not found in cart'}), 404)
 
-    # Remove the order item
     existing_order.order_items.remove(order_item)
     storage.save()
 
-    # Check if there are any remaining order items
+    # If no items are left in the cart, delete the order and its payment
     if not existing_order.order_items:
-        storage.delete(existing_order)  # Delete the order if there are no items left
+        existing_payment = storage.get_payment_by_order(existing_order.id)
+        if existing_payment:
+            storage.delete(existing_payment)  # Delete associated payment
+        storage.delete(existing_order)  # Delete the order
         storage.save()
         return jsonify({
             'success': True,
@@ -358,105 +283,8 @@ def remove_cart_item(menu_item_id):
     })
 
 
-"""@app_views.route('/checkout', methods=['POST'])
-def checkout():
-    
-    Process the checkout with the selected payment method and order details.
-    
-    user_id = session.get('user_id')
-    
-    # Ensure the user is logged in
-    if user_id is None:
-        return make_response(jsonify({'success': False, 'error': 'User not logged in'}), 403)
-
-    # Ensure request data is JSON
-    if not request.get_json():
-        return make_response(jsonify({'success': False, 'error': 'Invalid content type, expected JSON'}), 400)
-
-    data = request.get_json()
-
-    # Validate the data
-    # subtotal = data.get('subtotal')
-    total = data.get('total')
-    # delivery_fee = data.get('delivery_fee', 0)
-    payment_method = data.get('payment_method')
-
-    # Retrieve the user's pending order
-    existing_order = storage.get_pending_order_by_user(user_id)
-    
-    if not existing_order:
-        return make_response(jsonify({'success': False, 'error': 'No pending order found'}), 404)
-
-    # Create a new payment record
-    payment = Payment(
-        amount=round(float(total), 2),
-        method=payment_method,
-        status=PaymentStatus.PENDING,
-        order_id=existing_order.id  # Link to the existing order
-    )
-    
-    # Save the payment to the database
-    storage.new(payment)
-    storage.save()
-
-    # Return success response
-    return jsonify({'success': True})
-"""
-
-"""@app_views.route('/checkout', methods=['POST'])
-def checkout():
-   
-    Process the checkout with the selected payment method and order details.
-    
-    user_id = session.get('user_id')
-    
-    # Ensure the user is logged in
-    if user_id is None:
-        return make_response(jsonify({'success': False, 'error': 'User not logged in'}), 403)
-
-    # Ensure request data is JSON
-    if not request.get_json():
-        return make_response(jsonify({'success': False, 'error': 'Invalid content type, expected JSON'}), 400)
-
-    data = request.get_json()
-
-    # Validate the data
-    total = data.get('total')
-    payment_method = data.get('payment_method')
-
-    # Retrieve the user's pending order
-    existing_order = storage.get_pending_order_by_user(user_id)
-    
-    if not existing_order:
-        return make_response(jsonify({'success': False, 'error': 'No pending order found'}), 404)
-
-    # Check for existing payment
-    existing_payment = storage.get_payment_by_order(existing_order.id)
-
-    if existing_payment:
-        # Update existing payment
-        existing_payment.amount = total
-        existing_payment.method = payment_method
-        existing_payment.status = PaymentStatus.PENDING
-        storage.save()
-    else:
-        # Create a new payment record if no existing payment found
-        payment = Payment(
-            amount=total,
-            method=payment_method,
-            status=PaymentStatus.PENDING,
-            order_id=existing_order.id  # Link to the existing order
-        )
-        # Save the payment to the database
-        storage.new(payment)
-        storage.save()
-
-    # Return success response
-    return jsonify({'success': True})"""
-
-
-@app_views.route('/checkout', methods=['POST'])
-def checkout():
+@app_views.route('/update-location-payment', methods=['POST'])
+def update_location_payment():
     """
     Process the checkout with the selected payment method and order details.
     """
@@ -507,5 +335,11 @@ def checkout():
         storage.new(payment)
         storage.save()
 
-    # Return success response
-    return jsonify({'success': True})
+    # If payment method is 'Cash', mark the order as completed
+    if payment_method.lower() == 'cash':
+        existing_order.status = OrderStatus.COMPLETED
+        storage.save()
+
+
+    # Return success response with order ID
+    return jsonify({'success': True, 'order_id': existing_order.id})

@@ -216,4 +216,13 @@ class DBStorage:
         except Exception as e:
             print(f"Error fetching payment by order: {e}")
             return None
+        
+    def get_order_by_id(self, order_id):
+        """Retrieve an order by its ID."""
+        try:
+            order = self.__session.query(Order).filter_by(id=order_id).one_or_none()
+            return order
+        except Exception as e:
+            print(f"Error fetching order by ID: {e}")
+            return None
 

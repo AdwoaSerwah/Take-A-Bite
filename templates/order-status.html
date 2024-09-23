@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% set title = "Order Status" %}
+    {% set custom_css = 'styles/order-status.css' %}
+    <!--{% set custom_js = 'scripts/checkout.js' %}-->
+    
+    {% include 'head.html' %}
+<body>
+    <!-- Include the common header -->
+    {% include 'header.html' %}
+    <main>
+        <div class="main-header status-header">
+            <h1>Order Details</h1>
+        </div>
+        <div class="status-container main-container">
+            <p><strong>Order ID:</strong> {{ order.id }}</p>
+            <p><strong>Status:</strong> {{ order.status }}</p>
+            <p><strong>Amount:</strong> GHS {{ payment.amount }}</p>
+            <p><strong>Method:</strong> {{ payment.method }}</p>
+            
+            <h3>Order Items</h3>
+            <ul>
+                {% for item in order.menu_order_items %}
+                    <li>{{ item.menu_item_name }} - Quantity: {{ item.quantity }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Delivery Information</h3>
+            <p>Location: {{ order.location }}</p>
+            <p>Delivery Fee: GHS {{ order.delivery_price }}</p>
+
+            <a href="/menu">Order More</a>
+        </div>
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>

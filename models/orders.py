@@ -81,7 +81,12 @@ class Order(BaseModel, Base):
         if self.location_id:
             location = models.storage.get(Location, self.location_id)
             order_dict['location'] = location.name  # if location else "Pickup"
+            order_dict['delivery_price'] = location.delivery_price
         else:
             order_dict['location'] = "Pickup"
+            order_dict['delivery_price'] = 0
+
+        # Add order items
+        order_dict['menu_order_items'] = [item.to_dict() for item in self.order_items]
 
         return order_dict

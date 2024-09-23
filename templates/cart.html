@@ -6,12 +6,6 @@
     
     {% include 'head.html' %}
     <body>
-        <!-- Loading Spinner -->
-        <!--<div id="loading-spinner" class="loading-spinner">
-            <div class="spinner"></div>
-        </div>-->
-        
-        <!-- Include the common header -->
         {% include 'header.html' %}
         
         <main class="cart-container">
@@ -30,27 +24,11 @@
                                         <div class="name-price">
                                             <h3 class="cart-item-name">{{ item.menu_item.name }}</h3>
                                             <p class="cart-item-price">GH₵ {{ item.menu_item.price }}</p>
-
-                                            <!--<div class="">
-                                                <button class="quantity-decrease">-</button>
-                                                <input type="number" value="{{ item.quantity }}" class="quantity-input" min="1">
-                                                <button class="quantity-increase">+</button>
-                                            </div>-->
                                         </div>
 
                                         <p class="cart-item-total"><span>Total </span><span>GH₵ {{ item.quantity * item.menu_item.price }}</span></p>
                                     </div>
 
-                                    <!--<div class="quantity-remove">
-                                        <div class="quantity-counter">
-                                            <button class="quantity-btn minus {% if item.quantity == 1 %}faded-icon{% endif %}">−</button>
-                                            <span class="quantity">{{ item.quantity }}</span>
-                                            <button class="quantity-btn plus {% if item.quantity == 10 %}faded-icon{% endif %}">+</button>
-                                        </div>
-                                       
-                                        <button class="remove-item"><i class="fas fa-trash fa-fw"></i> Remove</button>
-                                        
-                                    </div>-->
                                     <div class="quantity-remove">
                                         <form class="quantity-form" method="post" action="{{ url_for('app_views.update_cart_item', menu_item_id=item.menu_item.id) }}">
                                             <!--<div>Item id:  {{ item.menu_item.id }}</div>-->
@@ -83,31 +61,6 @@
                         </ul>
 
                         <!-- Delivery/Pickup Selection -->
-                        <!--<div class="delivery-option">
-                            <h4>Select Delivery or Pickup:</h4>
-                            <select id="delivery-option">
-                                <option value="pickup">Pickup</option>
-                                {% for location in locations %}
-                                <option value="{{ location.id }}">Delivery to {{ location.name }} (GH₵ {{ location.delivery_price }})</option>
-                                {% endfor %}
-                            </select>
-                        </div>-->
-
-                        <!-- Delivery/Pickup Selection -->
-                        <!--<div class="delivery-option">
-                            <h4>Select Delivery or Pickup:</h4>
-                            <select id="delivery-option">
-                                {% for location in locations %}
-                                    {% if location.name == 'Pickup' %}
-                                        <option value="{{ location.id }}">{{ location.name }}</option>
-                                    {% else %}
-                                        <option value="{{ location.id }}">Delivery to {{ location.name }} (GH₵ {{ location.delivery_price }})</option>
-                                    {% endif %}
-                                {% endfor %}
-                            </select>
-                        </div>-->
-
-                        <!-- Delivery/Pickup Selection -->
                         <div class="delivery-option">
                             <h4>Select Delivery or Pickup:</h4>
                             <select id="delivery-option">
@@ -124,41 +77,18 @@
                                 <!-- Delivery locations from the locations table -->
                                 {% for location in locations.values() %}
                                     {% if selected_location != location.name %}
-                                        <option value="{{ location.id }}">
-                                            Delivery to {{ location.name }} (GH₵ {{ location.delivery_price }})
+                                        <option value="{{ location.id }}" {% if location.name == "Pickup" %}data-name="pickup"{% endif %}>
+                                            {% if location.name == "Pickup" %}
+                                                Pickup
+                                            {% else %}
+                                                Delivery to {{ location.name }} (GH₵ {{ location.delivery_price }})
+                                            {% endif %}
                                         </option>
                                     {% endif %}
                                 {% endfor %}
                             </select>
                         </div>
 
-
-
-                        <!-- Payment Method Selection -->
-                        <!--<div class="payment-method">
-                            <h4>Select Payment Method:</h4>
-                            <label>
-                                <input type="radio" name="payment_method" value="Cash" checked>
-                                Cash
-                            </label>
-                            <label>
-                                <input type="radio" name="payment_method" value="MTN Mobile Money">
-                                MTN Mobile Money
-                            </label>
-                            <label>
-                                <input type="radio" name="payment_method" value="Vodafone Cash">
-                                Vodafone Cash
-                            </label>
-                            <label>
-                                <input type="radio" name="payment_method" value="AirtelTigo Money">
-                                AirtelTigo Money
-                            </label>
-
-                            <label>
-                                <input type="radio" name="payment_method" value="Debit/Credit Card">
-                                Debit/Credit Card
-                            </label>
-                        </div>-->
                         <div class="payment-method">
                             <h4>Select Payment Method:</h4>
                             <label>
@@ -184,26 +114,8 @@
                         </div>                        
                     </div>
 
-                    <!--<div class="cart-summary">
-                        <form id="checkout-form" method="post" action="{{ url_for('app_views.checkout') }}">
-                            <h3>Order Summary</h3>
-                            <p class="cart-subtotal">
-                                <span>Subtotal</span> 
-                                <span>GH₵ <span class="subtotal">{{ cart_subtotal }}</span></span>
-                            </p>
-                            <p class="cart-delivery">
-                                <span>Delivery</span> <span>GH₵ <span class="delivery"></span></span>
-                            </p>
-                            <p class="cart-total">
-                                <span>Total</span> <span>GH₵ <span class="total">{{ cart_subtotal }}</span></span>
-                            </p>
-                            
-                            <div class="checkout-btn-div"><button class="checkout-btn">Checkout</button></div>
-                        </form>
-                    </div>-->
-
                     <div class="cart-summary">
-                        <form id="checkout-form" method="post" action="{{ url_for('app_views.checkout') }}">
+                        <form id="checkout-form" method="post" action="{{ url_for('app_views.update_location_payment') }}">
                             <h3>Order Summary</h3>
                             <p class="cart-subtotal">
                                 <span>Subtotal</span> 
@@ -236,11 +148,7 @@
                     
                 {% else %}
                     <div class="empty-cart main-container">
-                        <!--<div class="empty-cart-icon"><i class="fa fa-cart-arrow-down fa-fw"></i></div>-->
 
-                        <!--<i class="fas fa-meh" style="font-size: 50px; color: #e8e6c2; background-color: black;"></i>
-                        <i class="fas fa-frown" style="font-size: 50px; color: #555;"></i>-->
-                        
                         <p>Your cart is empty.</p>
                         <div>Browse our menu categories and add items to cart!</div>
                         <a href="{{ url_for('html_views.menu') }}">View Menu</a>

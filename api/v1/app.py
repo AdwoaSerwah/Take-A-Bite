@@ -56,6 +56,9 @@ cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 # Configure session secret key from environment
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
+# Configure paystack secret key from environment
+paystack_secret_key = os.getenv('PAYSTACK_SECRET_KEY')
+
 
 @app.teardown_appcontext
 def close_db(error):

@@ -1,0 +1,165 @@
+main {
+    /*border: #007bff solid 3px;*/
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.checkout-header {
+    margin-bottom: 30px;
+    font-size: calc(1rem + 1.5vw);
+    /*border: solid gold 3px;*/
+}
+
+.checkout-container, .checkout-header, .no-order-message {
+    padding: 20px;
+    background-color: #f8f7eb /*#e7e5c7*/;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.checkout-container, .no-order-message { 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    /*border: solid palevioletred 3px;*/
+}
+
+
+.checkout-container h3 {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+}
+
+.order-summary, .payment-method {
+    display: flex;
+    flex-direction: column;
+    /*border: solid brown 3px;*/
+    gap: 2px;
+}
+
+
+.payment-method a {
+    text-decoration: none;
+    color: #4b6b0f;
+    font-weight: 900;
+    font-size: 1.1rem;
+    font-family: "Nunito", sans-serif;
+}
+
+.payment-method a:hover {
+    text-decoration: underline;
+}
+
+
+
+.checkout-container button {
+    background-color: #e08f15;
+    color: #f9f9f9;
+    padding: 6px 15px;
+    border: solid #e09423 1px;
+    cursor: pointer;
+    width: 280px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    font-family: "Nunito", sans-serif;
+    margin-top: 5px;
+}
+
+.checkout-container button:hover {
+    background-color: #b87510;
+}
+
+
+.no-order-message {
+    /*border: solid purple 3px;*/
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    font-family: 'Open Sans', 'Heebo', sans-serif;
+    /*margin-top: auto;*/
+    /*margin-bottom: auto;*/
+}
+
+.no-order-message p {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    /*font-weight: 600;*/
+}
+
+.no-order-message div {
+    margin-bottom: 8px;
+    /*font-size: 1.1rem;*/
+}
+
+.no-order-message a {
+    width: 150px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 4px;
+    font-family: "Nunito", sans-serif;
+    /*border: white solid 5px;*/
+    /*font-weight: 400;*/
+
+    background-color: #e08f15;  
+    cursor: pointer;
+    /*border-radius: 5px;*/
+    border: solid #e09423 1px;
+    font-weight: 700;
+    
+    color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+}
+
+.no-order-message a:hover {
+    background-color: #b87510;
+}
+
+
+@media (max-width: 370px) {
+    .checkout-container button {
+        width: 100%;
+    }
+
+    .checkout-container, .checkout-header, header, main, footer, .no-order-message {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .checkout-container h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 305px) {
+    .checkout-container, .checkout-header, .no-order-message {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /*.checkout-header {
+        pad
+    }*/
+}
+
+@media (max-width: 286px) {
+    header, main, footer {
+        padding-left: 0px;
+        padding-right: 0px; 
+    }
+
+    .checkout-container, .navbar, .footer-container, .main-header, .no-order-message {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+

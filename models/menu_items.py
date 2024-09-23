@@ -32,3 +32,14 @@ class MenuItem(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes menu item"""
         super().__init__(*args, **kwargs)
+
+    def to_dict(self):
+        """Returns a dictionary representation of the menu item"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'price': float(self.price),  # Convert to float for consistency
+            'category_id': self.category_id,
+            'image_url': self.image_url
+        }

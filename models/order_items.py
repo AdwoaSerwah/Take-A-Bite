@@ -30,3 +30,12 @@ class OrderItem(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes order item for database"""
         super().__init__(*args, **kwargs)
+
+    def to_dict(self):
+        """Returns a dictionary representation of the order item"""
+        return {
+            'id': self.id,
+            'menu_item_id': self.menu_item_id,
+            'quantity': self.quantity,
+            'menu_item_name': self.menu_item.name if self.menu_item else "Unknown"
+        }

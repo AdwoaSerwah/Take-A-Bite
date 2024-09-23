@@ -23,6 +23,7 @@ class Payment(BaseModel, Base):
         method = Column(String(50), nullable=False)  # e.g., Credit Card, PayPal
         status = Column(Enum(PaymentStatus), default=PaymentStatus.PENDING, nullable=False)
         order_id = Column(String(60), ForeignKey('orders.id'), nullable=False)
+        transaction_ref = Column(String(255), nullable=True)
         
         # Define relationships
         order = relationship("Order", back_populates="payment")
@@ -33,6 +34,7 @@ class Payment(BaseModel, Base):
         method = ""
         status = PaymentStatus.PENDING
         order_id = ""
+        transaction_ref = ""
 
     def __init__(self, *args, **kwargs):
         """initializes payment for database"""

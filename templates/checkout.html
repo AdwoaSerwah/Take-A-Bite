@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% set title = "Checkout" %}
+    {% set custom_css = 'styles/checkout.css' %}
+    {% set custom_js = 'scripts/checkout.js' %}
+    
+    {% include 'head.html' %}
+    <body>
+        <!-- Loading Spinner -->
+        <!--<div id="loading-spinner" class="loading-spinner">
+            <div class="spinner"></div>
+        </div>-->
+        
+        <!-- Include the common header -->
+        {% include 'header.html' %}
+        
+        <main>
+            <h2 class="main-header checkout-header">Checkout</h2>
+            {% if existing_order %}
+                <div class="checkout-container main-container">
+                
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <p><strong>Location:</strong> {{ location }}</p>
+                        <p><strong>Subtotal:</strong> GHS {{ subtotal }}</p>
+                        <p><strong>Delivery Price:</strong> GHS {{ delivery_price }}</p>
+                        <p><strong>Total:</strong> GHS {{ delivery_price + subtotal }}</p>
+                    </div>
+            
+                    <div class="payment-method">
+                        <h3>Payment Method</h3>
+                        <p>You selected: <strong>{{ selected_payment_method }}</strong></p>
+                    </div>
+            
+                    <!--<button id="paystackButton" 
+                        data-total="{{ delivery_price + subtotal }}" 
+                        data-email="{{ user.email }}" 
+                        data-order-id="{{ existing_order.id }}"
+                        data-username="{{ user.username }}">
+                        Proceed to Payment
+                    </button>-->
+                    <form id="payment-form" action="{{ url_for('app_views.update_payment') }}" method="post"> <!-- Action can be set to "#" as we're using JS to handle payment -->
+                        <button id="paystackButton" 
+                            type="submit" 
+                            data-total="{{ delivery_price + subtotal }}" 
+                            data-email="{{ user.email }}" 
+                            data-order-id="{{ existing_order.id }}"
+                            data-username="{{ user.username }}">
+                            Proceed to Payment
+                        </button>
+                    </form>                    
+                </div>
+            {% else %}
+                <div class="no-order-message main-container">
+                    <p>No existing order found.</p>
+                    <div>Browse our menu categories and add items to cart!</div>
+                    <a href="{{ url_for('html_views.menu') }}" class="btn">View Menu</a>
+                </div>
+            {% endif %}
+        </main>
+        
+
+        {% include 'footer.html' %}
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+    </body>
+</html>
