@@ -37,7 +37,7 @@ body {
 }
 
 
-h2, h3, h4 {
+h1, h2, h3, h4 {
     font-family: "Nunito", sans-serif;
 }
 
@@ -81,26 +81,26 @@ header, footer {
     font-size: 1.2rem;
 }
 
-.navbar {
+.navbar, .hero {
     display: flex;
     position: relative;
 }
 
 
 
-.navbar, .main-container, .footer-container, .main-header {
+.navbar, .main-container, .footer-container, .main-header, .hero {
     /*border: blue solid 3px;*/
     width: 100%;
 }
 
 @media (min-width: 1175px){
-    .navbar, .main-container, .footer-container, .main-header {
+    .navbar, .main-container, .footer-container, .main-header, .hero {
         max-width: 1320px;
     }
 }
 
 /*@media (max-width: 1174px){
-    .navbar, .main-container, .footer-container, .main-header {
+    .navbar, .main-container, .footer-container, .main-header, .hero {
         max-width: 1000px;
     }
 }*/
@@ -302,7 +302,7 @@ header, footer {
 
     .nav-links {
         display: flex; /* Show the nav-links on larger screens */
-        gap: 30px;
+        gap: 20px;
         align-items: center;
         /*color: brown;*/
     }
@@ -341,7 +341,7 @@ header, footer {
 
 /* Hide nav-links on smaller screens */ /*1030px*/
 @media (max-width: 991px) {
-    /*.navbar, .main-container, .footer-container {
+    /*.navbar, .main-container, .footer-container, .hero {
         max-width: 800px;
     }*/
 
@@ -433,7 +433,7 @@ header, footer {
         padding-right: 0px; 
     }
 
-    .navbar, .footer-container, .main-header {
+    .navbar, .footer-container, .main-header, .hero {
         padding-left: 10px !important;
         padding-right: 10px !important;
     }

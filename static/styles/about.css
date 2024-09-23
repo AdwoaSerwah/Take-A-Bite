@@ -1,0 +1,93 @@
+.about-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    /*text-align: center;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    align-items: center;
+    /*border: solid blue 3px;*/
+    width: 100%;
+    gap: 30px
+}
+
+
+.timeline, .team-highlight, .about-container, .project-vision {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    /*border: solid red 3px;*/
+    align-items: center;
+    gap: 10px;
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+
+.timeline ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.timeline ul li {
+    margin-bottom: 10px;
+}
+
+.team-highlight,
+.project-vision,
+.timeline {
+    margin-top: 10px;
+}
+
+.team-highlight ul.social-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team-highlight ul.social-links li {
+    display: inline;
+    margin-right: 50px;
+}
+
+.team-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media (max-width: 1000px) {
+    .timeline, .team-highlight, .about-container, .project-vision {
+        width: 100%;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}
+
+@media (max-width: 370px) {
+    .timeline, .team-highlight, .about-container,
+    .project-vision, header, main, footer {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+}
+
+@media (max-width: 330px) {
+    header, main, footer {
+        padding-left: 0;
+        padding-right: 0; 
+    }
+
+    .navbar, .footer-container,
+    .main-header, .timeline, .team-highlight, .about-container,
+    .project-vision {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}

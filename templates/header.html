@@ -1,4 +1,4 @@
-<header>
+<!--<header>-->
     <nav class="navbar">
         <div class="ham-logo">
             <div class="logo">
@@ -18,11 +18,11 @@
                     <i class="fas fa-home  fa-fw"></i> HOME
                 </a>
             </li>
-            <!--<li>
+            <li>
                 <a href="{{ url_for('html_views.about') }}" class="{{ 'active' if request.endpoint == 'html_views.about' else '' }}">
                     <i class="fas fa-info-circle  fa-fw"></i> ABOUT
                 </a>
-            </li>-->
+            </li>
             <li>
                 <a href="{{ url_for('html_views.menu') }}" class="{{ 'active' if request.endpoint == 'html_views.menu' else '' }}">
                     <i class="fas fa-utensils  fa-fw"></i> MENU
@@ -77,21 +77,7 @@
 
                 </ul>
             </li>
-            
-            <!-- Cart with Counter -->
-            <!--<li>
-                <a href="{{ url_for('html_views.cart') }}" class="{{ 'active' if request.endpoint == 'html_views.cart' else '' }}">
-                    <span class="cart-icon">
-                        <i class="fas fa-shopping-cart fa-fw"></i>
-                        <span id="cart-counter" class="cart-counter">0</span>
-                    </span>
-                    CART
-                </a>
-            </li>-->
-            <!--<li class="nav-order">
-                <a href="{{ url_for('html_views.menu') }}">ORDER NOW</a>
-            </li>-->
-            <!-- Cart with Counter -->
+
             <li>
                 <a href="{{ url_for('html_views.cart') }}" class="{{ 'active' if request.endpoint == 'html_views.cart' else '' }}">
                     <span class="cart-icon">
@@ -107,4 +93,4 @@
             </li>
         </ul>
     </nav>
-</header>
+<!--/header>-->

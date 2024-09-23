@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% set title = "Checkout" %}
-    {% set custom_css = 'styles/checkout.css' %}
-    {% set custom_js = 'scripts/checkout.js' %}
-    
-    {% include 'head.html' %}
+        {% set title = "Checkout" %}
+        {% set custom_css = 'styles/checkout.css' %}
+        {% set custom_js = 'scripts/checkout.js' %}
+        
+        {% include 'head.html' %}
     <body>
         <!-- Loading Spinner -->
         <!--<div id="loading-spinner" class="loading-spinner">
@@ -12,7 +12,9 @@
         </div>-->
         
         <!-- Include the common header -->
-        {% include 'header.html' %}
+         <header>
+            {% include 'header.html' %}
+         </header>
         
         <main>
             <h2 class="main-header checkout-header">Checkout</h2>

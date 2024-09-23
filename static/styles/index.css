@@ -1,112 +1,99 @@
-/* General styles for body and html */
-body, html {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #e8e6c2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /*align-items: center;*/
-    /*min-height: 100vh;*/
-    width: 100%;
-    /*position: relative;*/
-    color: #e8e6c2;
-    font-size: 1rem;
-    font-weight: 400;
-    /*line-height: 1.5;*/
+* {
     box-sizing: border-box;
 }
 
 main {
-    flex: 1;
-    height: 100vh; /* Full viewport height for main section */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-    scroll-snap-align: start;
+    /*border: #007bff solid 3px;*/
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
+header, .navbar, .nav-links {
+    background: none;
+}
 header {
-    height: 100vh; /* Full viewport height for header */
-    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
+    align-items: center;
     scroll-snap-align: start;
+    
+    background: url(../images/hamburger-with-glass-water-side.jpg) center/cover no-repeat;
+    /*justify-content: space-between;*/
+    
     position: relative;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #537e03;
+
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    position: absolute; /* Position navbar over the hero image */
-    top: 0;   
-    /*color: white;*/
+    height: 100%;    
+    background-color: rgba(0, 0, 0, 0.8); /* Adjust the opacity here */
+    z-index: 1; /* Ensures the overlay is behind other content */
 }
 
-.navbar .logo a {
-    text-decoration: none;
-    color: #e8e6c2;
-    font-size: calc(1.375rem + 1.5vw);
-    font-weight: 900;
-    text-decoration: none;
+header * {
+    position: relative;
+    z-index: 2; /* Ensures that your content stays above the overlay */
 }
-
-.navbar .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.navbar .nav-links li a {
-    text-decoration: none;
-    color: #e8e6c2;
-    font-size: 18px;
-    font-weight: 900;
-    outline: none;
-    transition: .5s;
-}
-
-
-/* General styles for the navbar links */
-
-/* Hover effect for the navbar links */
-.navbar .nav-links li a:hover,
-.navbar .logo a:focus {
-    color: orange;
-}
-
-/* Style for the active link */
-.navbar .nav-links li a.active,
-.navbar .logo a.active {
-    color: orange;
-}
-
 
 .hero {
-    background: url(../images/hamburger-with-glass-water-side.jpg) center/cover no-repeat;
+    
     color: #e8e6c2;
-    text-align: center;
-    padding: 100px 20px;
+    /*padding: 100px 20px;*/
     /*height: 90vh;*/
     /*min-height: 70vh;*/
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100%; /* Ensures hero fills the header */
     width: 100%;
+    /*border: solid 3px orangered;*/
+    gap: 30px;
 
+}
+
+.hero-btn, main .btn {
+    width: 250px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 4px;
+    font-family: "Nunito", sans-serif;
+    /*border: white solid 5px;*/
+    /*font-weight: 400;*/
+
+    background-color: #FEA116;  
+    cursor: pointer;
+    /*border-radius: 5px;*/
+    border: solid #e09423 1px;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    color: #f7f7f7;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-family: "Nunito", sans-serif;
+    margin-top: 10px;
+}
+
+.hero-btn:hover, main .btn:hover {
+    background-color: #b87510;
+}
+
+
+
+.dropdown-content {
+    background: none;
+    border: #e8e6c2 solid 1px;
 }
 
 @media (max-width: 992px) {
@@ -117,32 +104,298 @@ header {
 
 .hero h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: calc(2rem + 1.5vw);
     font-weight: bold;
 
 }
 
 .hero p {
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: 1,1rem;
+    font-weight: 400;
+    /*margin-top: 10px;*/
 }
 
-main p {
-    color: black;
-    font-size: 40px;
+.home-container {
+    
+    display: flex;
+    flex-direction: column;
+    /*gap: 15px;*/
+}
+
+.feature-header, .menu-header, .discover, .about-header {
+    width: 100%;
+    /*border: solid greenyellow 4px;*/
+}
+
+main h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.features {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    /*background-color: #f7f7f7;*/
+    /*border: solid 3px purple ;*/
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top: 0;
+    /*background-color: #f7f7f7;*/
+}
+
+section {
+    /*border-radius: 8px;*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #eae5b6;
+    padding-bottom: 50px !important;
+
+}
+
+/*.feature, *//*.menu-item,*/ /*.about-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}*/
+
+
+
+.feature {
+    /*text-align: center;*/
+    max-width: 400px;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
+    /*border: solid 3px greenyellow;*/
+    /*background-color: #eeedd4;*/
+    
+    display: flex;
+    /*background-color: #eae5b6;*/
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 20px;
+
+}
+
+.feature img, .menu-item img {
+    width: 100%;
+    height: 140px;
+    border-radius: 10px;
+    object-fit: cover;    
+    /*border: solid  5px green;*/
+}
+
+
+.feature h3 .menu-item h3 {
+    margin: 20px 0 10px;
+    font-size: 1.2rem;
+}
+
+/* About Section */
+.about-section {
+    /*background-color: #f9f9f9;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*align-items: center;*/
+    width: 100%;
+    /*border: solid salmon 3px;*/
+    padding: 20px;
+}
+
+.about-container {
+    display: flex;
+    /*padding-bottom: 30px;*/
+}
+
+.btn-primary {
+    
+    /*border: solid blue 5px;*/
+}
+
+.about-img, .about-info {
+    /*border: orange solid 3px;*/
+    width: 50%;
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;    
+    padding: 20px;
+}
+
+.about-info {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.about-section p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.team-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.team-links a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.discover {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+
+
+
+
+#menu-feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+    background-color: #f9f9f9;
+    /*background-color: #f7f7f7;*/
+    /*border: solid 3px yellow !important;*/
+    width: 100%;
+    padding: 20px;
+    margin-top: 0;
+    /*background-color: #f7f7f7;*/
+}
+
+.menu-items {
+    /*border: solid orchid 3px;*/
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    flex-wrap: wrap;
+    
+}
+
+.menu-item {
+    min-width: 270px;
+    max-width: 350px;
+    flex: 1 1 270px;
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+
+}
+
+/*.menu-item img {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;    
+    border: solid  5px green;
+}*/
+
+.menu-info {
+    /*border: solid 3px black;*/
+    padding: 15px;
+}
+       
+
+
+.discover {
+    width: 100%;
+    /*border: green solid 5px;*/
+}
+
+
+
+#menu-feature .btn {
+    margin: 0 auto;
+    width: 300px;
+    margin-top: 30px;
 }
 
 footer {
-    background-color: #537e03;
-    min-height: 60px;
-    border-top: 1px #CCCCCC solid;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    /*position: fixed;
-    bottom: 0;*/
+    background-color: rgba(0, 0, 0);
 }
 
-                          
+@media (max-width: 945px) {
+    .about-container {
+        flex-direction: column;
+        /*border: solid palegreen 3px;*/
+        width: 100% !important;
+    }
+
+    .about-img, .about-info {
+        /*border: orange solid 3px;*/
+        width: 100%;
+    }
+}
+
+@media (max-width: 465px) {
+    .menu-item, .feature {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto;
+    }
+
+    .menu-item img {
+        height: 180px;
+    }
+
+    .hero-btn, main .btn, #menu-feature .btn{
+        padding-left: 0;
+        padding-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    section, #menu-feature, .features, .about-section {
+        padding: 0;
+    }
+}
+
+@media (max-width: 286px) {
+    header, main, footer {
+        padding-left: 0px;
+        padding-right: 0px; 
+    }
+
+    header {
+        padding-bottom: 20px;
+        min-height: 100vh;
+    }
+
+    .main-container, .navbar, .footer-container, .main-header {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+

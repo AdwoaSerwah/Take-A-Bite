@@ -74,14 +74,27 @@ def check_email():
 def home():
     """ Index template rendering """
     cache_id = uuid.uuid4()
-    return render_template('index.html', cache_id=cache_id)
+    user, username, cart_item_count, _ = get_user_and_cart_info()
+
+    return render_template('index.html',
+                           cache_id=cache_id,
+                           user=user,
+                            username= username,
+                            cart_item_count=cart_item_count)
+
 
 
 @html_views.route('/about/', strict_slashes=False)
 def about():
     """ About template rendering """
     cache_id = uuid.uuid4()
-    return render_template('about.html', cache_id=cache_id)
+    user, username, cart_item_count, _ = get_user_and_cart_info()
+
+    return render_template('about.html',
+                           cache_id=cache_id,
+                           user=user,
+                            username= username,
+                            cart_item_count=cart_item_count)
 
 
 @html_views.route('/contact/', strict_slashes=False)

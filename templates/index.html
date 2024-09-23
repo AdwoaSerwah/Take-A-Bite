@@ -1,39 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}?v={{ cache_id }}">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}?v={{ cache_id }}" type="image/x-icon">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js?{{ cache_id }}"></script>
-    <script src="{{ url_for('static', filename='scripts/index.js') }}?v={{ cache_id }}"></script>
-</head>
+    {% set title = "Home" %}
+    {% set custom_css = 'styles/index.css' %}
+    {% set custom_js = 'scripts/index.js' %}
+    
+    {% include 'head.html' %}
 <body>
     <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="{{ url_for('html_views.home') }}">Take-A-Bite</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="{{ url_for('html_views.home') }}">Home</a></li>
-                <li><a href="{{ url_for('html_views.home') }}">About</a></li>
-                <li><a href="{{ url_for('html_views.menu') }}">Menu</a></li>
-                <li><a href="{{ url_for('html_views.home') }}">Contact</a></li>
-                <li><a href="{{ url_for('html_views.home') }}">Sign in</a></li>
-
-            </ul>
-        </nav>
+        {% include 'header.html' %}
         <div class="hero">
-            <h1>Welcome to Take-A-Bite</h1>
-            <p>Delicious meals, just a click away.</p>
+            <h1>Delicious Meals,<br>just a click away.</h1>
+            <p class="hero-description">
+                Craving something delicious? With Take-A-Bite,
+                ordering your<br>favorite meals for pickup or delivery has never been easier.<br>
+                From local flavors to international dishes,
+                we bring the best of<br>
+                Accra's food scene straight to you.
+            </p>
+            <a href="{{ url_for('html_views.menu') }}" class="hero-btn">Order Now</a>
         </div>
     </header>
     <main>
-        <p>Will add soon</p>
+        <div class="home-container main-container">
+            <section class="features">
+                <h2 class="feature-header">What We Offer</h2>
+                <div class="feature">
+                    <img src="{{ url_for('static', filename='images/food-ordering.jpg') }}" alt="Easy Ordering">
+                    <h3>Easy Ordering</h3>
+                    <p>With just a few clicks, you can place an order for pickup or delivery, making it simple to enjoy your favorite meals anytime, anywhere.</p>
+                </div>
+                <div class="feature">
+                    <img src="{{ url_for('static', filename='images/delivery.jpg') }}" alt="Fast Delivery">
+                    <h3>Fast Delivery</h3>
+                    <p>Our dispatch riders ensure that your food is delivered hot and fresh in no time, right to your doorstep.</p>
+                </div>
+                <div class="feature">
+                    <img src="{{ url_for('static', filename='images/wide-variety.jpg') }}" alt="Wide Variety of Cuisines">
+                    <h3>Wide Variety</h3>
+                    <p>Explore a vast selection of dishes, from local Ghanaian favorites to international cuisines, all available at your fingertips.</p>
+                </div>
+            </section>
+            
+            <section id="menu-feature">
+                <h2 class="menu-header">Explore Our Menu</h2>
+                <p class="discover">Discover a variety of delicious meals prepared just for you!</p>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="{{ url_for('static', filename='images/fried-rice.jpg') }}" alt="Fried Rice">
+                        <div class="menu-info">
+                            <h3>Fried Rice</h3>
+                            <p>Rice stir-fried with vegetables, hot green pepper and fried prawns.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="{{ url_for('static', filename='images/fish-chips.jpg') }}" alt="Fish and Chips">
+                        <div  class="menu-info">
+                            <h3>Fish and Chips</h3>
+                            <p>Succulent fried fish served with fries and a slice of lemon.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="{{ url_for('static', filename='images/pancake.jpg') }}" alt="Pancakes">
+                        <div class="menu-info">
+                            <h3>Pancakes</h3>
+                            <p>Delicious pancakes served with ice cream and chocolate syrup.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="{{ url_for('static', filename='images/waffle.jpg') }}" alt="Waffle">
+                        <div class="menu-info">
+                            <h3>Waffles</h3>
+                            <p>Belgian waffles with vanilla ice cream and strawberries.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{{ url_for('html_views.menu') }}" class="btn">View Menu</a>
+            </section>
+
+                <!-- About Section -->
+            <section id="about-section" class="about-section main-container">
+                <h2 class="about-header">About Take-A-Bite</h2>
+                <div class="about-container">
+                <div class="about-img">
+                    <img src="{{ url_for('static', filename='images/about.jpg') }}" alt="Section About Image">
+                </div>
+                <div class="about-info">
+                <p>
+                    Take-A-Bite was born out of a passion for making food delivery and pick-up more convenient in Accra.
+                    What makes Take-A-Bite special is our focus on simplicity, and user experience. 
+                </p>
+                <p>
+                    Whether you're grabbing lunch or quick snack, Take-A-Bite ensures that your food arrives hot, fresh,
+                    and on time. This project is not only a practical tool but also a portfolio project 
+                    developed during my time at ALX School. 
+                </p>
+                <p>
+                    Want to learn more about the journey or connect with me? Visit my GitHub repository or
+                    connect with me on social media.
+                </p>
+                <div class="team-links">
+                    <a href="https://www.linkedin.com/in/adwoa-kyei-baffour-892490192" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/AdwoaSerwah" target="_blank">GitHub</a>
+                    <a href="https://x.com/Adwoa_SerwahKB" target="_blank">Twitter</a>
+                    <a href="https://github.com/AdwoaSerwah/Take-A-Bite" target="_blank">Project Repository</a>
+                </div>
+                <a href="{{ url_for('html_views.about') }}" class="btn btn-primary">Learn More</a>
+                </div>
+                </div>
+            </section>
+
+        </div>      
     </main>
-    <footer>
-        <p>Footer here</p>
-    </footer>
+    {% include 'footer.html' %}
 </body>
 </html>

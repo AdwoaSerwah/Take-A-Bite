@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% set title = "Take-A-Bite | Welcome" %}
+    {% set custom_css = 'styles/about.css' %}
+    {% set custom_js = 'scripts/about.js' %}
+    
+    {% include 'head.html' %}
+<body>
+
+    <!-- Intro Section -->
+    <header class="intro">
+        {% include 'header.html' %}
+    </header>
+
+    <main>
+        <section id="about" class="about-section main-container">
+            <div class="about-container">
+                <!-- About Section -->
+            
+                <h2>About Take-A-Bite</h2>
+                <p>
+                    Take-A-Bite was born out of a passion for making food delivery and pick-up more convenient in Accra.
+                    What makes Take-A-Bite special is our focus on simplicity, and user experience. 
+                </p>
+                <p>
+                    Whether you're grabbing lunch or quick snack, Take-A-Bite ensures that your food arrives hot, fresh,
+                    and on time. This project is not only a practical tool but also a portfolio project 
+                    developed during my time at ALX School. 
+                </p>
+                <p>
+                    Want to learn more about the journey or connect with me? Visit my GitHub repository or
+                    connect with me on social media.
+                </p>
+                <div class="team-links">
+                    <a href="https://www.linkedin.com/in/adwoa-kyei-baffour-892490192" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/AdwoaSerwah" target="_blank">GitHub</a>
+                    <a href="https://x.com/Adwoa_SerwahKB" target="_blank">Twitter</a>
+                </div>
+            </div>
+            <!-- Timeline Teaser -->
+            <div class="timeline">
+                <h3>Timeline of Development</h3>
+                <ul>
+                    <li><strong>July 2024:</strong> Idea was conceived</li>
+                    <li><strong>August 2024:</strong> Development started</li>
+                    <li><strong>September 2024:</strong> Project completed</li>
+                </ul>
+            </div>
+
+            <!-- Team Highlight -->
+            <div class="team-highlight">
+                <h3>Meet the Developer</h3>
+                <p>Hi! I'm Adwoa Serwah, the creator of Take-A-Bite, a portfolio project for Holberton School.</p>
+                <p>Check out my work here:</p>
+                <ul class="social-links">
+                    <a href="https://github.com/AdwoaSerwah/Take-A-Bite" target="_blank">Project Repository</a>
+                </ul>
+            </div>
+
+            <!-- Project Vision/Key Values -->
+            <div class="project-vision">
+                <h3>Our Vision</h3>
+                <p>At Take-A-Bite, we aim to simplify how you get your favorite meals, focusing on efficiency, 
+                reliability, and convenience. We believe in supporting local food vendors and providing customers 
+                with a seamless experience.</p>
+            </div>
+
+            <!-- Button to Full About Page -->
+            
+        </section>
+
+
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>
