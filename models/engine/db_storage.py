@@ -43,7 +43,9 @@ class DBStorage:
                                              HBNB_MYSQL_DB))"""
 
         DATABASE_URL = getenv('DATABASE_URL')
-        self.__engine = create_engine(DATABASE_URL)
+        # self.__engine = create_engine(DATABASE_URL)
+        self.__engine = create_engine(DATABASE_URL, pool_recycle=27000)
+
 
         if HBNB_ENV == "test":
             Base.metadata.drop_all(self.__engine)
