@@ -4,7 +4,7 @@ Take-A-Bite is a web application designed to help users easily browse and order 
 
 ## Introduction
 
-This project is deployed [here](https://adwoask.pythonanywhere.com/), and you can read the blog post about the project [here](https://medium.com/@lindseylinwood56/take-a-bite-revolutionizing-food-delivery-in-accra-62bf3848529f ).
+This project is deployed [here](https://adwoask.pythonanywhere.com/), and you can read the blog post about the project [here](https://medium.com/@lindseylinwood56/take-a-bite-revolutionizing-food-delivery-in-accra-62bf3848529f).
 
 **Project timeline:** August 2, 2024 – September 24, 2024  
 **Author:** [Adwoa Serwah](https://www.linkedin.com/in/adwoa-kyei-baffour-892490192)
@@ -217,40 +217,40 @@ This will start the Flask application, and you can access it in your browser at 
 Contributions are welcome! Please follow the standard GitHub flow:
 
 1. Fork the repository
+
 2. Create a feature branch (git checkout -b feature/YourFeature)
+
 3. Commit your changes (git commit -m 'Add YourFeature')
+
 4. Push to the branch (git push origin feature/YourFeature)
+
 5. Create a new Pull Request
 
-// Related Projects
-- AirBnB_clone
-- AirBnB_clone_v2
-- AirBnB_clone_v3
-- AirBnB_clone_v4
+## Related Projects
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+- [Flask](https://flask.palletsprojects.com/): A lightweight WSGI web application framework in Python.
 
-Links
-GitHub Repository: https://github.com/yourusername/take-a-bite
-Deployed Project: Take-A-Bite
-Project Blog Post: Final Blog
-LinkedIn: Your Name
-Screenshot
+- [Paystack Integration](https://paystack.com/): A platform for accepting payments, which you're using in your project.
+
+- [Holberton School Projects](https://www.holbertonschool.com/): Projects from Holberton School, where this project is being developed.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/AdwoaSerwah/Take-A-Bite/blob/main/LICENSE) file for details.
 
 
-markdown
-Copy code
+## Links
+- **GitHub Repository**: [Take-A-Bite Repository](https://github.com/AdwoaSerwah/Take-A-Bite)
+- **Deployed Project**: [Take-A-Bite](https://adwoask.pythonanywhere.com/) 
+- **Project Blog Post**: [Final Blog](https://medium.com/@lindseylinwood56/take-a-bite-revolutionizing-food-delivery-in-accra-62bf3848529f) 
+- **LinkedIn**: [Adwoa Serwah](https://www.linkedin.com/in/adwoa-kyei-baffour-892490192)
 
-This template covers all the required points:
 
-1. **Project Name**: "Take-A-Bite."
-2. **Introduction**: A brief overview of the project and links to the deployed site, blog, and LinkedIn profile.
-3. **Installation**: Clear step-by-step instructions to set up the project locally.
-4. **Usage**: How users can interact with the app.
-5. **Contributing**: Guidelines for contributions.
-6. **Related Projects**: Option to link to other projects if relevant.
-7. **Licensing**: Mentioning the license used (e.g., MIT).
-8. **Screenshot**: A visual representation of your app.
+## Screenshots
+![Login Page](screenshots/login.png)
 
-You can customize this according to your specific project details and links!
+![HomePage](screenshots/home.png)
+
+![Menu Page](screenshots/menu.png)
+
+
