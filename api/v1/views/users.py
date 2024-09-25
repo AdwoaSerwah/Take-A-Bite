@@ -12,8 +12,6 @@ import json
 from models.orders import Order
 from models.order_items import OrderItem
 from models.menu_items import MenuItem
-# from sqlalchemy.exc import IntegrityError
-
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/all_users.yml')

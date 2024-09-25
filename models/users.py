@@ -19,15 +19,11 @@ class User(BaseModel, Base):
         username = Column(String(10), nullable=False, unique=True) # String(10)
         email = Column(String(128), nullable=False, unique=True)
         phone_number = Column(String(15), nullable=False, unique=True)
-        # location = Column(String(256), nullable=True)
         password = Column(String(128), nullable=False)
         reset_token = Column(String(128), nullable=True)
         token_expiry = Column(DateTime, nullable=True)
 
         orders = relationship("Order", back_populates="user", cascade="all, delete-orphan")
-        # Relationship to carts
-        # cart = relationship("Cart", back_populates="user", uselist=False, cascade="all, delete-orphan")
-
     else:
         first_name = ""
         last_name = ""
@@ -56,6 +52,7 @@ class User(BaseModel, Base):
         return False
 
     def generate_reset_token(self):
+        """Generates the reset password token"""
         self.reset_token = secrets.token_urlsafe(64)
         self.token_expiry = datetime.now(timezone.utc) + timedelta(hours=1)  # Token valid for 1 hour
         self.save()  # Save to database

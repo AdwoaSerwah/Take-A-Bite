@@ -110,12 +110,9 @@ $(document).ready(function() {
             deliveryPrice = parseFloat($('option:selected', this).text().match(/\(GH₵ ([\d.]+)\)/)[1]);
 
             // Show the delivery price section
-            //$('.cart-delivery').show();
-            // Update the delivery price display
             $('.cart-delivery').addClass('visible');
         } else {
             // Hide the delivery price section if pickup is selected
-            //$('.cart-delivery').hide();
             $('.cart-delivery').removeClass('visible'); // Remove visible class to hide it
         }
 
@@ -176,9 +173,6 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.success) {
                     const orderID = response.order_id;  // Get the order ID from the response
-                    // Redirect to checkout page on success
-                    //console.log("Back from ajax");
-                    //window.location.href = "/checkout";
 
                     // Check the payment method and redirect accordingly
                     if (selectedPaymentMethod === 'Cash') {

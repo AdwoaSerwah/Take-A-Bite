@@ -1,17 +1,3 @@
-/*window.addEventListener('load', function() {
-    setTimeout(function() {
-        document.getElementById('loading-spinner').classList.add('hidden');
-    }, 700); // Adjust the delay as needed
-});
-
-
-// AJAX spinner handling
-$(document).ajaxStart(function () {
-    $("#loading-spinner").removeClass('hidden'); // Show the overlay (without the spinner)
-}).ajaxStop(function () {
-    $("#loading-spinner").addClass('hidden'); // Hide the overlay after AJAX request completes
-}); */
-
 $(document).ready(function () {    
     // Decrement quantity
     window.decrementQuantity = function (button) {
@@ -72,70 +58,6 @@ $(document).ready(function () {
             }
         }
     };
-
-    /*$(document).on('submit', '#add-to-cart-form', function (event) {
-        event.preventDefault(); // Prevent the default form submission
-    
-        // Get form data
-        const form = $(this);
-        const menuItem = form.closest('.menu-item');
-        const menuItemId = form.find('input[name="menu_item_id"]').val();
-        const quantityElement = menuItem.find('.quantity');
-        const quantity = parseInt(quantityElement.text());
-        const plusButton = menuItem.find('.quantity-btn.plus');
-        const minusButton = menuItem.find('.quantity-btn.minus');
-        const submitButton = form.find('button');
-        
-
-        console.log("Quantity: ", quantity);
-    
-        // Perform AJAX request to add the item to the cart
-        $.ajax({
-            url: form.attr('action'),  // Get the form action URL
-            method: "POST",
-            contentType: "application/json",  // Send as JSON
-            data: JSON.stringify({
-                menu_item_id: menuItemId,
-                quantity: parseInt(quantity)
-            }),
-            success: function(response) {
-
-                sessionStorage.removeItem('redirectUrl');
-    
-                if (submitButton.hasClass('add-cart')) {
-                    // Update the header cart counter and display it
-                    const headerCart = $('#cart-counter');
-                    const currentTotal = parseInt(headerCart.text()) || 0;
-                    
-                    headerCart.text(currentTotal + parseInt(quantity));
-                    headerCart.show(); // Show the cart counter        
-                    // Change button text to "View Cart"
-                    submitButton.text('View Cart')
-                        .addClass('view-cart') // Add a class to style the "View Cart" button
-                        .removeClass('add-cart'); // Remove the "Add Cart" class if it was present
-        
-                    // Add faded-icon class to plus and minus buttons
-                    plusButton.addClass('faded-icon');
-                    minusButton.addClass('faded-icon');
-                } else if (submitButton.hasClass('view-cart')) {
-                    // Redirect to the cart page
-                    window.location.href = "/cart"; // Replace with your actual cart page URL
-                }
-                
-
-            },
-            error: function(xhr, status, error) {
-                // Handle any errors
-                if (xhr.status === 401 || xhr.status === 403) {
-                    window.location.href = '/login';
-                } else {
-                    // Handle other errors
-                    console.error("Error adding to cart:", error);
-                    alert("There was an issue adding the item to your cart. Please try again.");
-                }
-            }
-        });
-    });*/
 
     $(document).on('submit', '#add-to-cart-form', function (event) {
         event.preventDefault(); // Prevent the default form submission

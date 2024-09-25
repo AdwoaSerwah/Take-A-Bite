@@ -50,20 +50,6 @@ class Order(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """Initializes order"""
         super().__init__(*args, **kwargs)
-
-    """def to_dict(self):
-        Returns a dictionary representation of the order
-        order_dict = super().to_dict()
-
-        # Convert Enum to string for JSON serialization
-        if isinstance(self.status, OrderStatus):
-            order_dict['status'] = self.status.value
-
-        # If using file storage, ensure total_amount is string (to avoid issues with numeric precision)
-        if models.storage_t != 'db':
-            order_dict['total_amount'] = str(self.total_amount)
-
-        return order_dict"""
     
     def to_dict(self):
         """Returns a dictionary representation of the order"""

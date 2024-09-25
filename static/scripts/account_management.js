@@ -18,7 +18,6 @@ $(document).ready(function () {
         "hideMethod": "fadeOut"
     };
 
-    // Example function to show a success message
     // Function to show success toast with optional delay for reload/redirect
     function showSuccess(message, callback = null) {
         toastr.success(message);

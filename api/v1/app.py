@@ -10,13 +10,7 @@ from models import storage
 #from api.v1.views import app_views, html_views
 import os
 
-
-
 load_dotenv()
-
-
-# from flasgger.utils import swag_from
-
 
 # app = Flask(__name__, static_folder='../../web_dynamic/static', template_folder='../../web_dynamic/templates')
 app = Flask(__name__, static_folder='../../static', template_folder='../../templates')
