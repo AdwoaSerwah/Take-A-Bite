@@ -1,6 +1,3 @@
-# Use 'pip install -r requirements.txt' to install these in your terminal
-# Python 3.10.5 (python version)
-
 attrs==24.2.0
 bcrypt==4.2.0
 blinker==1.8.2
@@ -18,12 +15,7 @@ jsonschema==4.23.0
 jsonschema-specifications==2023.12.1
 MarkupSafe==2.1.5
 mistune==3.0.2
-mysqlclient==2.1.1
-
-# Comment out mysqlclient line and try 'sudo apt-get install python3-mysqldb'
-# in terminal if using some Linux distributions like Deian and Ubuntu if
-# mysqlclient is causing issues you can't seem to fix
-
+mysqlclient==2.2.4
 python-dotenv==1.0.1
 PyYAML==6.0.2
 referencing==0.35.1
@@ -31,8 +23,3 @@ rpds-py==0.20.0
 six==1.16.0
 SQLAlchemy==1.4.47
 Werkzeug==2.0.3
-mysqlclient==2.1.1
-
-# 'pip list' to display all installed packages
-# Use 'pip freeze > requirements.txt' when venv is activated to get all dependencies
-# python3.10-venv 

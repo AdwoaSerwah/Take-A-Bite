@@ -1,10 +1,11 @@
 .env
 secret_key.py
 create_user
-setup_mysql_dev.sql
 venv
 __pycache__/
 *.pyc
-*.sh
-*.sql
 install_mysqlclient
+menu_items_original.sh
+categories_original.sh
+locations_original.sh
+.env.example
